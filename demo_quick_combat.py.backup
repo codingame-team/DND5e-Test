@@ -4,8 +4,9 @@ DEMO RAPIDE - Combat D&D 5e avec personnages aléatoires
 Lance un combat rapide pour démonstration
 """
 import sys
+sys.path.insert(0, '/Users/display/PycharmProjects/DnD-5th-Edition-API')
 
-from dnd_5e_core.data import generate_random_character, load_character_collections, request_monster, populate
+from main import generate_random_character, load_character_collections, request_monster, populate
 from dnd_5e_core import Monster, Character
 from dnd_5e_core.combat import CombatSystem
 from dnd_5e_core.mechanics import calculate_encounter_difficulty

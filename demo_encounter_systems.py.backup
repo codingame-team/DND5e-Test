@@ -4,6 +4,7 @@ Démonstration et comparaison des deux systèmes de génération de rencontres:
 2. Système basé sur les tables D&D 5e (nouveau): select_monsters_by_encounter_table
 """
 import sys
+sys.path.insert(0, '/Users/display/PycharmProjects/DnD-5th-Edition-API')
 
 from dnd_5e_core.mechanics import (
     get_appropriate_cr_range,
@@ -12,7 +13,7 @@ from dnd_5e_core.mechanics import (
     get_encounter_info,
     ENCOUNTER_TABLE
 )
-from dnd_5e_core.data import request_monster, populate
+from main import request_monster, populate
 from fractions import Fraction
 
 

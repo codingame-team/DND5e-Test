@@ -5,8 +5,9 @@ Version avec mécanique améliorée de positionnement front/arrière
 import sys
 
 # Ajouter le chemin du projet DnD-5th-Edition-API
+sys.path.insert(0, '/Users/display/PycharmProjects/DnD-5th-Edition-API')
 
-from dnd_5e_core.data import (
+from main import (
     generate_random_character,
     load_character_collections,
     request_monster,

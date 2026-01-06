@@ -3,8 +3,9 @@ Combat Avancé Utilisant le Nouveau Système de Rencontres D&D 5e
 Basé sur les tables officielles du Dungeon Master's Guide
 """
 import sys
+sys.path.insert(0, '/Users/display/PycharmProjects/DnD-5th-Edition-API')
 
-from dnd_5e_core.data import (
+from main import (
     generate_random_character,
     load_character_collections,
     request_monster,
