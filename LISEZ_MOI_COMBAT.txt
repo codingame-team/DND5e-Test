@@ -1,0 +1,65 @@
+================================================================================
+  🎲 D&D 5e - SCRIPTS DE COMBAT AVEC PERSONNAGES ALÉATOIRES 🎲
+================================================================================
+📌 NOUVEAUX SCRIPTS CRÉÉS (4)
+────────────────────────────────────────────────────────────────────────────
+1. 🎬 demo_quick_combat.py
+   └─ Démo rapide et condensée (première découverte)
+   └─ Commande: python demo_quick_combat.py
+2. 🔄 auto_random_combat.py  
+   └─ Combat automatique complet (tests)
+   └─ Commande: python auto_random_combat.py
+3. ⚔️  random_party_combat.py
+   └─ Combat avec pause d'analyse (combats variés)
+   └─ Commande: python random_party_combat.py
+4. 🏆 advanced_random_combat.py ⭐ RECOM4. 🏆 advanced_random_combat.py ⭐ RECOM4. 🏆 advanced_random_combat.py ⭐    └─ Commande: python advanced_random_combat.py
+================================================================================
+✨ FONCTIONNALITÉS PRINCIPALES
+────────────────────────────────────────────────────────────────────────────
+✅ Génération aléatoire de 6 personnages (fonction generate_random_character)
+✅ Niveaux variables (2-5)
+✅ Races: Elf, Dwarf, Human, Gnome, Dragonborn, etc.
+✅ Classes: Fighter, Wizard, Paladin, Rogue, Bard, etc.
+✅ Positionnement tactique:
+   🗡️  3 en ligne de FRONT (mêlée)
+   🏹 3 en ligne ARRIÈRE (distance/sorts)
+✅ Sélection automatique des monstres par Challenge Rating
+✅ Difficulté configurable: easy, medium, hard, deadly
+✅ Affichage détaillé avec émojis et statistiques
+================================================================================
+📚 DOCUMENTATION COMPLÈTE
+────────────────────────────────────────────────────────────────────────────
+README_COMBAT.md           - Guide complet de tous les scripts
+SUMMARY_RANDOM_COMBAT.md   - Résumé technique et personnalisation
+INDEX_COMBAT.md            - Vue d'ensemble et démarrage rapide
+Commande: python list_combat_scripts.py
+└─ Affiche la liste interactive de tous les scripts
+================================================================================
+🚀 DÉMARRAGE RAPIDE
+────────────────────────────────────────────────────────────────────────────
+Première fois?
+  → python demo_quick_combat.py
+Tests automatiques?
+  → python auto_random_combat.py
+Simulation complète?
+  → python a  → python a  → pytho================================================================================
+⚙️  PERSONNALISATION RAPIDE
+────────────────────────────────────────────────────────────────────────────
+Changer la difficulté (dans le script):
+  difficulty = "hard"  # 'easy', 'medium', 'hard', 'deadly'
+Changer les niveaux:
+  min_level = 5
+  max_level = 10
+Changer le nombre de personnages:
+  size = 4  # Au lieu de 6
+================================================================================
+📊 TABLEAU COMPARATIF
+────────────────────────────────────────────────────────────────────────────
+Script                         Auto Script                         ──────────────────────────────────────────────────────────────────────────
+demo_quick_combat.py           ❌     ✅       Condensé     ⭐
+auto_random_combat.py          ✅     ✅       Amélioré     ⭐⭐⭐
+random_party_combat.py         ❌     ✅       Standard     ⭐⭐⭐
+advanced_random_combat.py      ❌     ✅       Détaillé     ⭐⭐⭐⭐
+=================================================================================✅ TOUS LES SCRIPTS SONT TESTÉS ET FONCTIONNELS!
+Bon combat! ⚔️🎲
+================================================================================
