@@ -228,6 +228,90 @@ Un gobelin chef plus imposant se tient près de la cage."""
             ]
         ))
 
+        # SEARCH KEY
+        search_text = """Vous fouillez discrètement le repaire pendant que le chef gobelin
+est distrait par un autre gobelin apportant de la nourriture.
+
+Lidda fait signe: elle a trouvé un trousseau de clés accroché au mur!
+
+Voulez-vous essayer de les prendre furtivement ou créer une distraction?"""
+
+        self.scene_manager.add_scene(ChoiceScene(
+            scene_id="search_key",
+            title="🔍 FOUILLE DU REPAIRE",
+            description=search_text,
+            choices=[
+                {
+                    'text': "Lidda tente de voler les clés (test de discrétion)",
+                    'next_scene': "steal_key",
+                    'effects': {}
+                },
+                {
+                    'text': "Créer une distraction et prendre les clés",
+                    'next_scene': "distraction",
+                    'effects': {}
+                },
+                {
+                    'text': "Abandonner et attaquer le chef",
+                    'next_scene': "boss_goblin_chief",
+                    'effects': {}
+                }
+            ]
+        ))
+
+        # STEAL KEY
+        steal_text = """Lidda se glisse silencieusement le long du mur.
+        
+Elle tend la main vers le trousseau... et l'attrape sans faire de bruit!
+
+Le chef gobelin ne remarque rien. Vous vous approchez de la cage et libérez Erky!
+
+"Merci, aventuriers!" chuchote-t-il. "Sortons discrètement!"
+
+Vous vous échappez avant que les gobelins ne s'aperçoivent de quoi que ce soit!"""
+
+        self.scene_manager.add_scene(NarrativeScene(
+            scene_id="steal_key",
+            title="✅ ÉVASION RÉUSSIE",
+            text=steal_text,
+            next_scene_id="rescue_erky"
+        ))
+
+        # DISTRACTION
+        distract_text = """Tordek fait tomber un tonneau qui roule bruyamment!
+        
+Les gobelins se précipitent pour voir ce qui se passe.
+Pendant ce temps, Lidda attrape les clés et libère Erky!
+
+Mais le chef gobelin vous repère: "INTRUS! ATTAQUEZ!"
+
+Le combat est inévitable!"""
+
+        self.scene_manager.add_scene(NarrativeScene(
+            scene_id="distraction",
+            title="⚠️ DÉCOUVERTS!",
+            text=distract_text,
+            next_scene_id="boss_goblin_chief"
+        ))
+
+        # NEGOTIATE
+        negotiate_text = """Vous tentez de parler au chef gobelin.
+        
+"Libérez le prisonnier et nous vous laisserons en paix!"
+
+Le chef gobelin ricane: "Pourquoi? Vous êtes TROIS et nous sommes DIX!"
+
+Il siffle et d'autres gobelins émergent des ombres!
+
+Vous devez combattre!"""
+
+        self.scene_manager.add_scene(NarrativeScene(
+            scene_id="negotiate_goblins",
+            title="💬 NÉGOCIATION ÉCHOUÉE",
+            text=negotiate_text,
+            next_scene_id="boss_goblin_chief"
+        ))
+
         # BOSS FIGHT
         def create_goblin_chief(ctx):
             chief = self._create_goblin_chief()
@@ -301,6 +385,100 @@ Au centre, vous voyez un arbre immense et tordu... le Gulthias Tree."""
                     'effects': {}
                 }
             ]
+        ))
+
+        # EXAMINE TREE
+        examine_text = """Vous vous approchez prudemment de l'arbre.
+        
+Ses branches sont noires et tordues, couvertes de runes étranges.
+À sa base, vous trouvez des fruits étranges qui brillent faiblement.
+
+Jozan reconnaît ces symboles: "C'est de la magie druidique corrompue!
+L'arbre doit avoir un gardien... quelque chose qui le protège."
+
+Que voulez-vous faire?"""
+
+        self.scene_manager.add_scene(ChoiceScene(
+            scene_id="examine_tree",
+            title="🔍 EXAMEN DE L'ARBRE",
+            description=examine_text,
+            choices=[
+                {
+                    'text': "Chercher le gardien",
+                    'next_scene': "find_guardian",
+                    'effects': {}
+                },
+                {
+                    'text': "Prendre un fruit",
+                    'next_scene': "take_fruit",
+                    'effects': {}
+                },
+                {
+                    'text': "Attaquer l'arbre maintenant",
+                    'next_scene': "tree_awakens",
+                    'effects': {}
+                }
+            ]
+        ))
+
+        # FIND GUARDIAN
+        guardian_text = """Vous fouillez les environs de l'arbre...
+        
+Soudain, une silhouette émerge des ombres!
+
+C'est Belak le Franc-Tireur, un druide fou qui a corrompu l'arbre!
+
+"Vous n'auriez pas dû venir ici!" hurle-t-il. "L'arbre Gulthias vivra éternellement!"
+
+Il brandit son bâton et vous attaque, accompagné de deux lianes animées!"""
+
+        def create_belak_guardian(ctx):
+            # Créer Belak (boss final alternatif)
+            belak = self._create_tree_blight()  # Utiliser le même boss pour l'instant
+            belak.name = "Belak le Franc-Tireur"
+            return [belak]
+
+        self.scene_manager.add_scene(CombatScene(
+            scene_id="find_guardian",
+            title="🧙 BELAK LE FRANC-TIREUR",
+            description=guardian_text,
+            enemies_factory=create_belak_guardian,
+            on_victory_scene="defeat_belak",
+            on_defeat_scene="game_over"
+        ))
+
+        # DEFEAT BELAK
+        defeat_belak_text = """Belak s'effondre, vaincu!
+        
+"Non... l'arbre... il doit... survivre..." murmure-t-il avant de mourir.
+
+Sans son gardien, l'arbre Gulthias commence à se flétrir.
+Vous pouvez maintenant le détruire ou le laisser dépérir naturellement.
+
+Vous décidez de le brûler complètement pour vous assurer qu'il ne repousse jamais."""
+
+        self.scene_manager.add_scene(NarrativeScene(
+            scene_id="defeat_belak",
+            title="🔥 FIN DE L'ARBRE GULTHIAS",
+            text=defeat_belak_text,
+            next_scene_id="victory"
+        ))
+
+        # TAKE FRUIT
+        fruit_text = """Vous cueillez l'un des fruits brillants.
+        
+Dès que vous le touchez, l'arbre RÉAGIT!
+
+Ses branches fouettent l'air furieusement!
+Le gardien de l'arbre apparaît: "VOUS OSEZ TOUCHER AUX FRUITS SACRÉS?!"
+
+Le combat est inévitable!"""
+
+        self.scene_manager.add_scene(NarrativeScene(
+            scene_id="take_fruit",
+            title="⚠️ L'ARBRE RÉAGIT!",
+            text=fruit_text,
+            next_scene_id="find_guardian"
         ))
 
         # TREE AWAKENS - Boss final

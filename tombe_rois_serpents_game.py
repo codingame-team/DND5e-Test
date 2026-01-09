@@ -6,9 +6,7 @@ Aventure dans une pyramide oubliée
 from typing import List, Dict
 from dnd_5e_core import Character
 from src.scenarios.base_scenario import BaseScenario
-from src.scenes.scene_system import (
-    NarrativeScene, ChoiceScene, CombatScene, RestScene
-)
+from src.scenes.scene_system import (NarrativeScene, ChoiceScene, CombatScene, RestScene, MerchantScene)
 from src.utils.exploration_map import ExplorationMap
 
 
@@ -88,9 +86,95 @@ Des hiéroglyphes serpentins ornent les murs."""
 
         self.scene_manager.add_scene(NarrativeScene(
             scene_id="intro",
-            title="🔺 LA TOMBE DES ROIS SERPENTS",
+            title="🏜️ LA PYRAMIDE MAUDITE",
             text=intro_text,
-            next_scene_id="pyramid_entrance"
+            next_scene_id="village_hub"
+        ))
+
+        # 🆕 VILLAGE HUB - Point de départ avec options
+        class VillageHubScene(NarrativeScene):
+            def on_enter(scene_self, game_context: Dict):
+                super().on_enter(game_context)
+                self.update_map_location("village_oasis")
+
+        self.scene_manager.add_scene(VillageHubScene(
+            scene_id="village_hub",
+            title="🏘️ OASIS DU VILLAGE",
+            text="Vous êtes à l'oasis. Les habitants vous souhaitent bonne chance.",
+            next_scene_id="village_choice"
+        ))
+
+        # VILLAGE CHOICE - Menu principal
+        self.scene_manager.add_scene(ChoiceScene(
+            scene_id="village_choice",
+            title="🏘️ OASIS - PLACE CENTRALE",
+            description="Que voulez-vous faire avant d'entrer dans la pyramide?",
+            choices=[
+                {
+                    'text': "Parler aux villageois",
+                    'next_scene': "village_info",
+                    'effects': {'npcs_met': 1}
+                },
+                {
+                    'text': "Visiter le bazar (marchand)",
+                    'next_scene': "merchant_oasis"
+                },
+                {
+                    'text': "Se reposer à l'auberge",
+                    'next_scene': "rest_oasis"
+                },
+                {
+                    'text': "🗺️  Voir la carte",
+                    'next_scene': "show_map_scene"
+                },
+                {
+                    'text': "Partir vers la pyramide",
+                    'next_scene': "pyramid_entrance"
+                }
+            ]
+        ))
+
+        # INFO VILLAGEOIS
+        self.scene_manager.add_scene(NarrativeScene(
+            scene_id="village_info",
+            title="💬 RÉCITS DES VILLAGEOIS",
+            text="""Un vieil homme vous raconte: "La pyramide est maudite depuis des siècles.
+            
+Le Roi Serpent Sesshathep dort dans les profondeurs. Beaucoup sont entrés,
+peu en sont revenus. Méfiez-vous des gardiens et des pièges!"
+
+Il vous donne quelques pièces d'or pour vous aider.""",
+            next_scene_id="village_choice"
+        ))
+
+        # MARCHAND
+        self.scene_manager.add_scene(MerchantScene(
+            scene_id="merchant_oasis",
+            title="🛒 BAZAR DE L'OASIS",
+            merchant_id="desert_merchant",
+            next_scene_id="village_choice"
+        ))
+
+        # REPOS
+        self.scene_manager.add_scene(RestScene(
+            scene_id="rest_oasis",
+            title="💤 REPOS À L'AUBERGE",
+            rest_type="long",
+            next_scene_id="village_choice"
+        ))
+
+        # 🆕 CARTE
+        class ShowMapScene(NarrativeScene):
+            def on_enter(scene_self, game_context: Dict):
+                super().on_enter(game_context)
+                self.show_map()
+                game_context['renderer'].wait_for_input()
+
+        self.scene_manager.add_scene(ShowMapScene(
+            scene_id="show_map_scene",
+            title="🗺️ CARTE",
+            text="",
+            next_scene_id="village_choice"
         ))
 
         # PYRAMID ENTRANCE
@@ -325,15 +409,43 @@ La malédiction de la pyramide est brisée. Les trésors de la chambre funérair
 s'offrent à vous: or, gemmes, et artefacts anciens.
 
 Mais plus important encore, vous avez mis fin au règne de terreur de Sesshathep.
-Les villages du désert pourront enfin vivre en paix!
-
-La pyramide commence à trembler. Il est temps de partir avant qu'elle ne s'effondre!"""
+Les villages du désert pourront enfin vivre en paix!"""
 
         self.scene_manager.add_scene(NarrativeScene(
             scene_id="victory",
             title="🏆 LA TOMBE EST CONQUISE!",
             text=victory_text,
-            next_scene_id=None
+            next_scene_id="return_village"
+        ))
+
+        # RETOUR AU VILLAGE
+        self.scene_manager.add_scene(ChoiceScene(
+            scene_id="return_village",
+            title="🏘️ RETOUR TRIOMPHAL",
+            description="Vous retournez à l'oasis. Les villageois vous acclament en héros!",
+            choices=[
+                {
+                    'text': "Se reposer et célébrer",
+                    'next_scene': "rest_celebration",
+                    'effects': {'quests_completed': 1}
+                },
+                {
+                    'text': "Visiter le marchand (vendre trésors)",
+                    'next_scene': "merchant_oasis"
+                },
+                {
+                    'text': "Terminer l'aventure",
+                    'next_scene': None
+                }
+            ]
+        ))
+
+        # CÉLÉBRATION
+        self.scene_manager.add_scene(RestScene(
+            scene_id="rest_celebration",
+            title="🎉 CÉLÉBRATION",
+            rest_type="long",
+            next_scene_id="village_choice"
         ))
 
     def _init_game_state(self) -> Dict:
