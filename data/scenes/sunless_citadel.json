@@ -1,0 +1,188 @@
+{
+  "scenario_id": "sunless_citadel",
+  "name": "Tales from the Yawning Portal - The Sunless Citadel",
+  "level": 1,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 3,
+  "key_features": [
+    "PNJ allié (Erky Timbers)",
+    "Entrée secrète optionnelle",
+    "Boss végétal unique",
+    "Exploration de donjon classique"
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🏰 LA CITADELLE SANS SOLEIL",
+      "text": "Vous vous tenez devant l'entrée de la Citadelle Sans Soleil, une forteresse engloutie qui a sombré dans la terre il y a des siècles.\n\nLes villageois d'Oakhurst parlent d'aventuriers disparus, de gobelins malveillants, et d'un arbre maudit qui produit des fruits magiques...\n\nL'air est froid et humide. L'entrée béante semble vous appeler.",
+      "next_scene": "entrance"
+    },
+    {
+      "id": "entrance",
+      "type": "choice",
+      "title": "🚪 ENTRÉE DE LA CITADELLE",
+      "description": "Comment voulez-vous entrer?",
+      "choices": [
+        {
+          "text": "Descendre prudemment par l'ancien escalier",
+          "next_scene": "main_hall",
+          "effects": {}
+        },
+        {
+          "text": "Chercher une entrée alternative",
+          "next_scene": "side_entrance",
+          "effects": {"exploration": 1}
+        },
+        {
+          "text": "Se reposer avant d'entrer",
+          "next_scene": "rest_entrance",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "rest_entrance",
+      "type": "rest",
+      "title": "💤 CAMPEMENT À L'ENTRÉE",
+      "rest_type": "short",
+      "next_scene": "entrance"
+    },
+    {
+      "id": "side_entrance",
+      "type": "narrative",
+      "title": "🗿 ENTRÉE LATÉRALE",
+      "text": "Vous contournez les ruines et découvrez une fissure dans la pierre.\n\nEn vous faufilant à travers, vous évitez les pièges de l'entrée principale, mais vous entendez des voix gutturales... des gobelins!",
+      "next_scene": "goblin_guards"
+    },
+    {
+      "id": "main_hall",
+      "type": "choice",
+      "title": "🏛️ GRAND HALL",
+      "description": "Le grand hall est en ruine. Des colonnes brisées jonchent le sol.\n\nSur les murs, d'anciennes fresques dépeignent une citadelle glorieuse, maintenant tombée dans l'oubli.\n\nDeux passages s'ouvrent devant vous: l'un vers l'ouest, l'autre vers l'est.",
+      "choices": [
+        {
+          "text": "Explorer le passage ouest (quartiers gobelins)",
+          "next_scene": "goblin_guards",
+          "effects": {"locations_visited": 1}
+        },
+        {
+          "text": "Explorer le passage est (jardins souterrains)",
+          "next_scene": "underground_gardens",
+          "effects": {"locations_visited": 1}
+        },
+        {
+          "text": "Examiner les fresques plus attentivement",
+          "next_scene": "fresco_discovery",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "fresco_discovery",
+      "type": "narrative",
+      "title": "📜 DÉCOUVERTE HISTORIQUE",
+      "text": "En examinant les fresques, vous découvrez des indices sur l'histoire de la citadelle. Elle appartenait à un ordre de druides qui vénérait un arbre sacré.\n\nMais l'arbre fut corrompu par un mal ancien... le Gulthias Tree.\n\nCette information pourrait être cruciale.",
+      "next_scene": "main_hall"
+    },
+    {
+      "id": "goblin_guards",
+      "type": "combat",
+      "title": "⚔️ GARDES GOBELINS",
+      "description": "Trois gobelins vous attaquent!",
+      "monsters": ["goblin", "goblin", "goblin"],
+      "on_victory": "goblin_lair",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "goblin_lair",
+      "type": "choice",
+      "title": "🏚️ REPAIRE DES GOBELINS",
+      "description": "Vous pénétrez dans le repaire gobelin. Des paillasses sales, des tonneaux de provisions volées, et... une cage!\n\nÀ l'intérieur, un halfling prisonnier vous appelle faiblement.\n\"Aidez-moi... Je suis Erky Timbers, clerc d'Oakhurst... Ils m'ont capturé!\"\n\nUn gobelin chef plus imposant se tient près de la cage.",
+      "choices": [
+        {
+          "text": "Attaquer le chef gobelin pour libérer le prisonnier",
+          "next_scene": "boss_goblin_chief",
+          "effects": {}
+        },
+        {
+          "text": "Négocier avec le chef gobelin",
+          "next_scene": "negotiate_goblins",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "boss_goblin_chief",
+      "type": "combat",
+      "title": "👹 CHEF GOBELIN",
+      "description": "Le chef gobelin hurle et charge!",
+      "monsters": ["goblin_chief"],
+      "on_victory": "rescue_erky",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "rescue_erky",
+      "type": "narrative",
+      "title": "🆘 SAUVETAGE",
+      "text": "Vous libérez Erky Timbers de sa cage!\n\n\"Merci, aventuriers! J'ai été capturé il y a des semaines. Je peux vous soigner!\"\n\nErky utilise ses derniers sorts pour vous restaurer.",
+      "next_scene": "rest_lair",
+      "effects": {"npcs_met": 1, "ally_erky": true}
+    },
+    {
+      "id": "rest_lair",
+      "type": "rest",
+      "title": "💤 REPOS DANS LE REPAIRE",
+      "rest_type": "long",
+      "next_scene": "underground_gardens"
+    },
+    {
+      "id": "underground_gardens",
+      "type": "narrative",
+      "title": "🌳 JARDINS SOUTERRAINS",
+      "text": "Vous descendez vers les jardins souterrains.\n\nUne lumière étrange émane d'une caverne massive. Des plantes phosphorescentes poussent partout, créant une atmosphère irréelle.\n\nAu centre, vous voyez un arbre immense et tordu... le Gulthias Tree.",
+      "next_scene": "approach_tree"
+    },
+    {
+      "id": "approach_tree",
+      "type": "choice",
+      "title": "🌿 L'ARBRE MAUDIT",
+      "description": "L'arbre pulse d'une énergie maléfique. Que faites-vous?",
+      "choices": [
+        {
+          "text": "Attaquer l'arbre pour le détruire",
+          "next_scene": "tree_awakens",
+          "effects": {}
+        },
+        {
+          "text": "Examiner l'arbre prudemment",
+          "next_scene": "examine_tree",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "tree_awakens",
+      "type": "combat",
+      "title": "🌳 L'ARBRE S'ÉVEILLE!",
+      "description": "L'arbre s'anime, ses branches devenant des tentacules meurtriers!",
+      "monsters": ["tree_blight"],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "L'arbre maudit s'effondre dans un hurlement végétal!\n\nSes racines se flétrissent, libérant la citadelle de son emprise.\n\nVous avez triomphé de la Citadelle Sans Soleil!\n\nErky vous remercie chaleureusement. Les villageois d'Oakhurst vous accueilleront en héros. Vous avez gagné leur gratitude éternelle!",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 700,
+        "reputation": 10
+      }
+    }
+  ]
+}
+

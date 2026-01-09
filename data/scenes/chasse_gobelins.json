@@ -1,0 +1,122 @@
+{
+  "scenario_id": "chasse_gobelins",
+  "name": "La Chasse aux Gobelins",
+  "level": 3,
+  "difficulty": "easy",
+  "duration_hours": "1-2",
+  "recommended_party_size": 2,
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🏰 VILLAGE DE BRUME",
+      "text": "Le Village de Brume est en émoi. Des gobelins terrorisent la population, volant du bétail et effrayant les voyageurs.\n\nLe maire vous a convoqués. \"Nous avons besoin de héros! Les gobelins ont établi un camp dans la forêt sombre au nord. Débarrassez-nous d'eux, et vous serez grassement récompensés!\"\n\nVotre aventure commence...",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "village_choice",
+      "type": "choice",
+      "title": "🏘️ VILLAGE - PLACE CENTRALE",
+      "description": "Vous êtes au village. Que faire?",
+      "choices": [
+        {
+          "text": "Interroger les villageois",
+          "next_scene": "gather_info",
+          "effects": {"reputation": 1, "npcs_met": 1}
+        },
+        {
+          "text": "Visiter le marchand",
+          "next_scene": "merchant_1",
+          "effects": {}
+        },
+        {
+          "text": "Se reposer avant de partir",
+          "next_scene": "rest_1",
+          "effects": {}
+        },
+        {
+          "text": "Partir vers la forêt",
+          "next_scene": "forest",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "gather_info",
+      "type": "narrative",
+      "title": "📝 ENQUÊTE",
+      "text": "Les villageois vous parlent des gobelins avec terreur.\n\n\"Ils viennent la nuit, emportent nos moutons!\"\n\"J'ai vu leur chef - un gobelin énorme avec une grande hache!\"\n\"Leur camp est dans la forêt, près de l'ancienne carrière.\"\n\nVous avez maintenant une meilleure idée de ce qui vous attend.",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "merchant_1",
+      "type": "merchant",
+      "title": "🛒 BOUTIQUE DU VILLAGE",
+      "merchant_id": "village",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "rest_1",
+      "type": "rest",
+      "title": "💤 REPOS",
+      "rest_type": "short",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "forest",
+      "type": "choice",
+      "title": "🌲 FORÊT SOMBRE",
+      "description": "Vous entrez dans la forêt sombre.\n\nLes arbres sont denses, la lumière peine à passer. Vous entendez des bruits suspects... des voix gutturales au loin.\n\nVous approchez du camp gobelin.",
+      "choices": [
+        {
+          "text": "Avancer furtivement",
+          "next_scene": "goblin_camp",
+          "effects": {"locations_visited": 1}
+        },
+        {
+          "text": "Charger directement!",
+          "next_scene": "forest_ambush",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "forest_ambush",
+      "type": "combat",
+      "title": "⚔️ EMBUSCADE!",
+      "description": "Des gobelins surgissent!",
+      "monsters": ["goblin", "goblin", "goblin"],
+      "on_victory": "goblin_camp",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "goblin_camp",
+      "type": "narrative",
+      "title": "⛺ CAMP DES GOBELINS",
+      "text": "Vous trouvez le camp des gobelins.\n\nDes tentes sales, un feu de camp, et... des prisonniers!\nDeux villageois sont attachés à un poteau.\n\nAu fond du camp, vous voyez le chef gobelin - massif et menaçant.",
+      "next_scene": "boss_fight"
+    },
+    {
+      "id": "boss_fight",
+      "type": "combat",
+      "title": "👹 COMBAT FINAL - CHEF GOBELIN",
+      "description": "Le chef gobelin rugit et charge!",
+      "monsters": ["goblin_boss"],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Vous avez vaincu le chef gobelin!\n\nLes autres gobelins fuient dans la forêt. Vous libérez les prisonniers, qui vous remercient avec effusion.\n\nDe retour au village, les habitants vous acclament en héros!\nLe maire vous remet une bourse remplie d'or.\n\nVous avez sauvé le Village de Brume!",
+      "next_scene": null,
+      "rewards": {
+        "gold": 100,
+        "xp": 450,
+        "reputation": 5
+      }
+    }
+  ]
+}
+

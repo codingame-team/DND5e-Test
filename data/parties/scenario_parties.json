@@ -1,0 +1,283 @@
+{
+  "parties": {
+    "chasse_gobelins_party": {
+      "scenario": "chasse_gobelins",
+      "level": 3,
+      "size": 2,
+      "difficulty_rating": "easy",
+      "characters": [
+        {
+          "name": "Grok",
+          "race": "human",
+          "class": "fighter",
+          "level": 3,
+          "abilities": {
+            "str": 16,
+            "dex": 14,
+            "con": 15,
+            "int": 10,
+            "wis": 12,
+            "cha": 10
+          },
+          "hit_points": 28,
+          "armor_class": 16,
+          "equipment": {
+            "weapon": "greataxe",
+            "armor": "chainmail",
+            "shield": false
+          },
+          "gold": 50,
+          "proficiencies": ["athletics", "intimidation"]
+        },
+        {
+          "name": "Sœur Elara",
+          "race": "human",
+          "class": "cleric",
+          "level": 3,
+          "abilities": {
+            "str": 12,
+            "dex": 10,
+            "con": 14,
+            "int": 13,
+            "wis": 16,
+            "cha": 14
+          },
+          "hit_points": 24,
+          "armor_class": 16,
+          "equipment": {
+            "weapon": "mace",
+            "armor": "scale_mail",
+            "shield": true
+          },
+          "spells_known": [
+            "cure_wounds",
+            "bless",
+            "spiritual_weapon",
+            "healing_word"
+          ],
+          "spell_slots": {
+            "1": 4,
+            "2": 2
+          },
+          "gold": 30,
+          "proficiencies": ["religion", "medicine"]
+        }
+      ],
+      "tactics": "Grok en première ligne avec haute CA, Elara en soutien avec soins et buffs",
+      "synergies": ["bless sur Grok pour +1d4 aux attaques", "spiritual_weapon pour dégâts bonus"]
+    },
+    "sunless_citadel_party": {
+      "scenario": "sunless_citadel",
+      "level": 1,
+      "size": 3,
+      "difficulty_rating": "medium",
+      "characters": [
+        {
+          "name": "Tordek",
+          "race": "dwarf",
+          "class": "fighter",
+          "level": 1,
+          "abilities": {
+            "str": 16,
+            "dex": 12,
+            "con": 16,
+            "int": 10,
+            "wis": 11,
+            "cha": 9
+          },
+          "hit_points": 13,
+          "armor_class": 16,
+          "equipment": {
+            "weapon": "warhammer",
+            "armor": "chainmail",
+            "shield": true
+          },
+          "gold": 15,
+          "proficiencies": ["athletics", "survival"],
+          "racial_traits": ["darkvision", "dwarven_resilience"]
+        },
+        {
+          "name": "Jozan",
+          "race": "human",
+          "class": "cleric",
+          "level": 1,
+          "abilities": {
+            "str": 14,
+            "dex": 10,
+            "con": 13,
+            "int": 12,
+            "wis": 16,
+            "cha": 13
+          },
+          "hit_points": 9,
+          "armor_class": 14,
+          "equipment": {
+            "weapon": "mace",
+            "armor": "scale_mail",
+            "shield": false
+          },
+          "spells_known": [
+            "cure_wounds",
+            "bless",
+            "guiding_bolt"
+          ],
+          "spell_slots": {
+            "1": 2
+          },
+          "gold": 10,
+          "proficiencies": ["religion", "insight"]
+        },
+        {
+          "name": "Lidda",
+          "race": "halfling",
+          "class": "rogue",
+          "level": 1,
+          "abilities": {
+            "str": 10,
+            "dex": 17,
+            "con": 12,
+            "int": 14,
+            "wis": 13,
+            "cha": 12
+          },
+          "hit_points": 9,
+          "armor_class": 14,
+          "equipment": {
+            "weapon": "shortsword",
+            "armor": "leather_armor",
+            "shield": false
+          },
+          "gold": 25,
+          "proficiencies": ["stealth", "perception", "investigation", "sleight_of_hand"],
+          "racial_traits": ["lucky", "brave", "halfling_nimbleness"],
+          "sneak_attack_dice": "1d6"
+        }
+      ],
+      "tactics": "Tordek tank avec Jozan en support, Lidda frappe en ruse (sneak attack)",
+      "synergies": [
+        "bless sur toute l'équipe pour +1d4",
+        "Lidda utilise Hide et sneak attack",
+        "Tordek protège les deux autres"
+      ],
+      "notes": "Niveau 1 = fragiles, repos fréquents conseillés, Erky aide après sauvetage"
+    },
+    "tombe_rois_serpents_party": {
+      "scenario": "tombe_rois_serpents",
+      "level": 2,
+      "size": 3,
+      "difficulty_rating": "medium_hard",
+      "characters": [
+        {
+          "name": "Ankhar le Fort",
+          "race": "human",
+          "class": "fighter",
+          "level": 2,
+          "abilities": {
+            "str": 17,
+            "dex": 13,
+            "con": 15,
+            "int": 10,
+            "wis": 12,
+            "cha": 11
+          },
+          "hit_points": 20,
+          "armor_class": 17,
+          "equipment": {
+            "weapon": "longsword",
+            "armor": "chainmail",
+            "shield": true
+          },
+          "fighting_style": "defense",
+          "second_wind": true,
+          "action_surge": true,
+          "gold": 20,
+          "proficiencies": ["athletics", "intimidation"]
+        },
+        {
+          "name": "Neith la Sage",
+          "race": "human",
+          "class": "cleric",
+          "level": 2,
+          "abilities": {
+            "str": 12,
+            "dex": 10,
+            "con": 14,
+            "int": 13,
+            "wis": 16,
+            "cha": 14
+          },
+          "hit_points": 15,
+          "armor_class": 15,
+          "equipment": {
+            "weapon": "mace",
+            "armor": "scale_mail",
+            "shield": true
+          },
+          "spells_known": [
+            "cure_wounds",
+            "bless",
+            "healing_word",
+            "lesser_restoration"
+          ],
+          "spell_slots": {
+            "1": 3
+          },
+          "channel_divinity": "turn_undead",
+          "gold": 15,
+          "proficiencies": ["religion", "medicine"]
+        },
+        {
+          "name": "Zephyr l'Érudit",
+          "race": "elf",
+          "class": "wizard",
+          "level": 2,
+          "abilities": {
+            "str": 8,
+            "dex": 14,
+            "con": 12,
+            "int": 17,
+            "wis": 13,
+            "cha": 10
+          },
+          "hit_points": 11,
+          "armor_class": 12,
+          "equipment": {
+            "weapon": "quarterstaff",
+            "armor": "none",
+            "shield": false,
+            "spellbook": true
+          },
+          "spells_known": [
+            "magic_missile",
+            "shield",
+            "mage_armor",
+            "detect_magic",
+            "identify"
+          ],
+          "cantrips": [
+            "fire_bolt",
+            "ray_of_frost",
+            "mage_hand"
+          ],
+          "spell_slots": {
+            "1": 3
+          },
+          "gold": 10,
+          "proficiencies": ["arcana", "history"],
+          "racial_traits": ["darkvision", "fey_ancestry", "trance"]
+        }
+      ],
+      "tactics": "Tank (Ankhar) + Healer (Neith) + Blaster/Control (Zephyr)",
+      "synergies": [
+        "Bless de Neith sur Ankhar et Zephyr",
+        "Shield de Zephyr pour survie (AC 17)",
+        "Magic Missile pour dégâts garantis",
+        "Turn Undead de Neith contre gardiens morts-vivants",
+        "Lesser Restoration contre poison des serpents"
+      ],
+      "notes": "Pyramide = pièges et poison, Neith essentielle. Zephyr fragile mais puissant. Offrande recommandée (éviter gardiens).",
+      "recommended_strategy": "Faire offrande (10 po) pour passage secret, éviter combat gardiens, repos avant boss"
+    }
+  }
+}
+

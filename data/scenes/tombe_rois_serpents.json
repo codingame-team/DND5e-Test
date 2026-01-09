@@ -1,0 +1,190 @@
+{
+  "scenario_id": "tombe_rois_serpents",
+  "name": "La Tombe des Rois Serpents",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "2",
+  "recommended_party_size": 3,
+  "key_features": [
+    "Choix moraux avec conséquences",
+    "Passage secret si offrande",
+    "Pièges mortels",
+    "Thème égyptien"
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🔺 LA TOMBE DES ROIS SERPENTS",
+      "text": "Le soleil brûlant du désert frappe impitoyablement alors que vous approchez de l'ancienne pyramide.\n\nDes légendes parlent des Rois Serpents qui régnaient autrefois sur ces terres, enterrés avec d'incroyables trésors... et de terribles malédictions.\n\nL'entrée de la pyramide s'ouvre devant vous comme une gueule béante. Des hiéroglyphes serpentins ornent les murs.",
+      "next_scene": "pyramid_entrance"
+    },
+    {
+      "id": "pyramid_entrance",
+      "type": "choice",
+      "title": "🚪 ENTRÉE DE LA PYRAMIDE",
+      "description": "Vous vous tenez à l'entrée de la pyramide.\n\nDes torches éternelles brûlent d'une flamme verdâtre, projetant des ombres dansantes. L'air sent le renfermé et quelque chose de plus sinistre... du venin.\n\nDeux passages s'ouvrent devant vous.",
+      "choices": [
+        {
+          "text": "Emprunter le passage de gauche (Chambre des Offrandes)",
+          "next_scene": "offering_chamber",
+          "effects": {"locations_visited": 1}
+        },
+        {
+          "text": "Emprunter le passage de droite (Salle des Gardiens)",
+          "next_scene": "guardian_hall",
+          "effects": {"locations_visited": 1}
+        },
+        {
+          "text": "Examiner les hiéroglyphes à l'entrée",
+          "next_scene": "hieroglyph_study",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "hieroglyph_study",
+      "type": "narrative",
+      "title": "📜 ÉTUDE DES HIÉROGLYPHES",
+      "text": "Vous étudiez attentivement les hiéroglyphes.\n\nIls racontent l'histoire du Roi Serpent Sesshathep, qui fut enterré vivant avec ses serviteurs les plus fidèles... des hommes-serpents.\n\n\"Que celui qui entre respecte les offrandes, ou qu'il périsse par le venin.\"\n\nCette connaissance pourrait vous sauver la vie.",
+      "next_scene": "pyramid_entrance",
+      "effects": {"knowledge_hieroglyphs": true}
+    },
+    {
+      "id": "offering_chamber",
+      "type": "choice",
+      "title": "🏺 CHAMBRE DES OFFRANDES",
+      "description": "La Chambre des Offrandes est remplie de vases, de statues, et d'objets précieux.\n\nAu centre, un autel avec une statue de serpent doré. Ses yeux sont des rubis.\n\nDes squelettes d'aventuriers imprudents jonchent le sol.",
+      "choices": [
+        {
+          "text": "Faire une offrande à la statue (déposer 10 po)",
+          "next_scene": "make_offering",
+          "effects": {"offering_made": true},
+          "condition": "party_gold >= 10"
+        },
+        {
+          "text": "Voler les rubis de la statue",
+          "next_scene": "steal_rubies",
+          "effects": {"curse_level": 1}
+        },
+        {
+          "text": "Quitter la chambre prudemment",
+          "next_scene": "guardian_hall",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "make_offering",
+      "type": "narrative",
+      "title": "✨ OFFRANDE ACCEPTÉE",
+      "text": "Vous déposez respectueusement 10 pièces d'or sur l'autel.\n\nLa statue de serpent s'illumine brièvement. Un passage secret s'ouvre dans le mur!\n\nVous avez gagné la faveur des Rois Serpents.",
+      "next_scene": "secret_passage",
+      "effects": {"secret_passage_found": true}
+    },
+    {
+      "id": "steal_rubies",
+      "type": "combat",
+      "title": "💀 PIÈGE MORTEL!",
+      "description": "Du gaz toxique s'échappe! Des serpents venimeux attaquent!",
+      "monsters": ["poison_snake"],
+      "on_victory": "guardian_hall",
+      "on_defeat": "game_over",
+      "difficulty_modifier": 1.2
+    },
+    {
+      "id": "guardian_hall",
+      "type": "narrative",
+      "title": "🗿 SALLE DES GARDIENS",
+      "text": "Vous entrez dans la Salle des Gardiens.\n\nD'immenses statues de guerriers serpents bordent les murs. Leurs yeux semblent vous suivre...\n\nAu fond de la salle, une porte ornée de serpents entrelacés.",
+      "next_scene": "guardian_fight"
+    },
+    {
+      "id": "guardian_fight",
+      "type": "combat",
+      "title": "⚔️ LES GARDIENS S'ÉVEILLENT!",
+      "description": "Les statues s'animent! Des hommes-serpents squelettiques vous attaquent!",
+      "monsters": ["snake_guardian", "snake_guardian"],
+      "on_victory": "throne_room_approach",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "secret_passage",
+      "type": "narrative",
+      "title": "🗝️ PASSAGE SECRET",
+      "text": "Le passage secret vous mène directement à une antichambre près de la Salle du Trône, évitant les gardiens!\n\nVous trouvez également un coffre contenant des potions et de l'équipement.",
+      "next_scene": "rest_before_king",
+      "rewards": {
+        "items": ["potion_healing", "potion_healing"],
+        "gold": 50
+      }
+    },
+    {
+      "id": "rest_before_king",
+      "type": "rest",
+      "title": "💤 REPOS AVANT LE ROI",
+      "rest_type": "short",
+      "next_scene": "throne_room_approach"
+    },
+    {
+      "id": "throne_room_approach",
+      "type": "choice",
+      "title": "👑 PORTE DE LA SALLE DU TRÔNE",
+      "description": "Vous arrivez devant la porte de la Salle du Trône.\n\nDes serpents vivants glissent sur le sol. L'air est épais et chargé de magie ancienne.\n\nDerrière cette porte se trouve le Roi Serpent Sesshathep. Êtes-vous prêts?",
+      "choices": [
+        {
+          "text": "Ouvrir la porte et affronter le Roi Serpent",
+          "next_scene": "final_boss",
+          "effects": {}
+        },
+        {
+          "text": "Se préparer d'abord (repos court)",
+          "next_scene": "rest_final",
+          "effects": {}
+        },
+        {
+          "text": "Tenter de parlementer",
+          "next_scene": "parley_attempt",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "rest_final",
+      "type": "rest",
+      "title": "💤 DERNIERS PRÉPARATIFS",
+      "rest_type": "short",
+      "next_scene": "final_boss"
+    },
+    {
+      "id": "parley_attempt",
+      "type": "narrative",
+      "title": "🗣️ TENTATIVE DE PARLEY",
+      "text": "Vous tentez de parlementer avec le Roi Serpent...\n\nMais il n'écoute pas! \"Profanateurs! Vous paierez de votre vie!\"\n\nLe combat est inévitable!",
+      "next_scene": "final_boss"
+    },
+    {
+      "id": "final_boss",
+      "type": "combat",
+      "title": "👑🐍 LE ROI SERPENT SESSHATHEP",
+      "description": "Le Roi Serpent momifié se lève de son trône! Ses yeux brillent d'un feu vert!",
+      "monsters": ["snake_king"],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🏆 LA TOMBE EST CONQUISE!",
+      "text": "Le Roi Serpent s'effondre dans un nuage de poussière millénaire!\n\nLa malédiction de la pyramide est brisée. Les trésors de la chambre funéraire s'offrent à vous: or, gemmes, et artefacts anciens.\n\nMais plus important encore, vous avez mis fin au règne de terreur de Sesshathep. Les villages du désert pourront enfin vivre en paix!\n\nLa pyramide commence à trembler. Il est temps de partir avant qu'elle ne s'effondre!",
+      "next_scene": null,
+      "rewards": {
+        "gold": 300,
+        "xp": 450,
+        "reputation": 8,
+        "items": ["ancient_amulet"]
+      }
+    }
+  ]
+}
+
