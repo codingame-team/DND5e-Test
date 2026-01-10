@@ -543,8 +543,8 @@ class SceneManager:
         result = scene.execute(game_context)
 
         # Mettre à jour scène courante
-        if scene.next_scene_id:
-            self.current_scene_id = scene.next_scene_id
+        # Si next_scene_id est None, on termine le scénario
+        self.current_scene_id = scene.next_scene_id
 
         return result
 
@@ -564,12 +564,19 @@ class SceneManager:
             result = self.execute_scene(self.current_scene_id, game_context)
 
             if result == SceneResult.EXIT:
+                print("\n" + "="*70)
+                print("🏁 Fin du scénario")
+                print("="*70)
                 break
             elif result == SceneResult.FAILURE:
                 # Gérer échec (game over, etc.)
+                print("\n💀 Game Over")
                 break
 
-            # Si pas de prochaine scène, fin
+            # Si pas de prochaine scène, fin du scénario
             if not self.current_scene_id:
+                print("\n" + "="*70)
+                print("🏁 Fin du scénario - Merci d'avoir joué!")
+                print("="*70)
                 break
 
