@@ -1,0 +1,209 @@
+{
+  "scenario_id": "auberge_sanglier_gris",
+  "name": "L'Auberge du Sanglier Gris",
+  "level": 1,
+  "difficulty": "easy",
+  "duration_hours": "1-2",
+  "recommended_party_size": 3,
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🍺 L'AUBERGE DU SANGLIER GRIS",
+      "text": "Une nuit d'orage, vous trouvez refuge dans l'Auberge du Sanglier Gris, sur la route du Nord.\n\nL'aubergiste, un homme jovial nommé Gregor, vous accueille chaleureusement: \"Entrez, entrez! Une nuit terrible pour voyager!\"\n\nL'auberge est pleine: des marchands, un groupe de nains, une mystérieuse femme encapuchonnée, et un barde qui joue de la lyre.\n\nVous vous installez près du feu pour vous réchauffer.",
+      "next_scene": "tavern_choice"
+    },
+    {
+      "id": "tavern_choice",
+      "type": "choice",
+      "title": "🏠 SALLE COMMUNE",
+      "description": "L'ambiance est chaleureuse. Que faites-vous?",
+      "choices": [
+        {
+          "text": "Parler avec l'aubergiste Gregor",
+          "next_scene": "talk_gregor",
+          "effects": {}
+        },
+        {
+          "text": "Écouter le barde",
+          "next_scene": "listen_bard",
+          "effects": {}
+        },
+        {
+          "text": "Observer la femme mystérieuse",
+          "next_scene": "observe_woman",
+          "effects": {}
+        },
+        {
+          "text": "Discuter avec les nains",
+          "next_scene": "talk_dwarves",
+          "effects": {}
+        },
+        {
+          "text": "Aller se coucher",
+          "next_scene": "go_to_bed",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "talk_gregor",
+      "type": "narrative",
+      "title": "🍖 GREGOR L'AUBERGISTE",
+      "text": "Gregor vous sert une chope de bière et un ragoût fumant.\n\n\"Alors, vous voyagez par ce temps? Vous êtes courageux! La route n'est pas sûre ces temps-ci.\"\n\n\"Des bandits ont attaqué une caravane la semaine dernière. Et on parle de créatures étranges dans les bois...\"\n\n\"Mais ici, vous êtes en sécurité! L'Auberge du Sanglier Gris est réputée!\"",
+      "next_scene": "tavern_choice"
+    },
+    {
+      "id": "listen_bard",
+      "type": "narrative",
+      "title": "🎵 LE BARDE MELODIUS",
+      "text": "Le barde joue une mélodie envoûtante.\n\nIl chante une vieille légende sur le trésor caché du Baron Noir, quelque part dans les collines proches.\n\n\"Un trésor maudit, dit-on. Mais qui tente n'a rien!\"\n\nLes clients applaudissent. Le barde vous fait un clin d'œil.",
+      "next_scene": "tavern_choice"
+    },
+    {
+      "id": "observe_woman",
+      "type": "narrative",
+      "title": "👤 LA FEMME MYSTÉRIEUSE",
+      "text": "Vous observez discrètement la femme encapuchonnée.\n\nElle reste à l'écart, dans l'ombre. Elle semble attendre quelqu'un...\n\nElle lève soudain les yeux et croise votre regard. Ses yeux brillent d'une lueur étrange. Puis elle détourne le regard.\n\nQui est-elle?",
+      "next_scene": "tavern_choice"
+    },
+    {
+      "id": "talk_dwarves",
+      "type": "narrative",
+      "title": "⛏️ LES NAINS MINEURS",
+      "text": "Les trois nains sont des mineurs revenant de la montagne.\n\n\"On a trouvé un filon d'argent!\" se vante l'un d'eux.\n\n\"Mais des gobelins rôdent dans les tunnels. On a dû battre en retraite!\"\n\n\"Si vous cherchez l'aventure, allez voir la mine abandonnée au nord. Il y a sûrement du trésor... et des gobelins!\"",
+      "next_scene": "tavern_choice"
+    },
+    {
+      "id": "go_to_bed",
+      "type": "narrative",
+      "title": "🛏️ CHAMBRE À L'ÉTAGE",
+      "text": "Vous montez vous coucher dans votre chambre à l'étage.\n\nLa nuit est calme. Vous entendez la pluie tambouriner sur le toit.\n\nSoudain... CRASH!\n\nUn cri retentit en bas! Suivi d'un bruit de lutte!\n\nVous sautez de votre lit et vous précipitez en bas!",
+      "next_scene": "night_attack"
+    },
+    {
+      "id": "night_attack",
+      "type": "narrative",
+      "title": "⚔️ ATTAQUE NOCTURNE!",
+      "text": "Vous dévalez les escaliers.\n\nDans la salle commune, le chaos règne! Des bandits masqués ont envahi l'auberge!\n\n\"Personne ne bouge! Donnez-nous vos objets de valeur!\" crie leur chef.\n\nGregor est au sol, blessé. La femme mystérieuse a disparu. Les nains se battent déjà!\n\nÀ vous d'agir!",
+      "next_scene": "bandit_choice"
+    },
+    {
+      "id": "bandit_choice",
+      "type": "choice",
+      "title": "🗡️ LES BANDITS",
+      "description": "Les bandits pillent l'auberge! Que faites-vous?",
+      "choices": [
+        {
+          "text": "Attaquer les bandits!",
+          "next_scene": "fight_bandits",
+          "effects": {}
+        },
+        {
+          "text": "Négocier avec le chef",
+          "next_scene": "negotiate_bandits",
+          "effects": {}
+        },
+        {
+          "text": "Protéger Gregor",
+          "next_scene": "protect_gregor",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "negotiate_bandits",
+      "type": "narrative",
+      "title": "💬 NÉGOCIATION",
+      "text": "Vous tentez de raisonner le chef des bandits.\n\n\"Partez maintenant et nous ne vous poursuivrons pas!\"\n\nLe chef ricane: \"Vous? Nous arrêter? Vous n'êtes que quatre!\"\n\n\"Les gars, montrez-leur qui commande ici!\"\n\nLes bandits attaquent!",
+      "next_scene": "fight_bandits"
+    },
+    {
+      "id": "protect_gregor",
+      "type": "narrative",
+      "title": "🛡️ PROTECTION",
+      "text": "Vous vous interposez entre Gregor et les bandits.\n\n\"Vous voulez le vieux? Il faudra passer sur nos corps!\"\n\nLe chef des bandits sort son épée: \"Très bien! Comme vous voulez!\"\n\nLe combat commence!",
+      "next_scene": "fight_bandits"
+    },
+    {
+      "id": "fight_bandits",
+      "type": "combat",
+      "title": "⚔️ COMBAT DANS L'AUBERGE",
+      "description": "Les bandits vous attaquent! Tables renversées, chopes qui volent, c'est la bagarre générale!",
+      "monsters": ["cultist", "cultist", "cultist"],
+      "on_victory": "after_bandits",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "after_bandits",
+      "type": "narrative",
+      "title": "✅ BANDITS VAINCUS",
+      "text": "Les bandits sont vaincus! Le chef et ses hommes fuient dans la nuit.\n\nGregor se relève péniblement: \"Merci... vous m'avez sauvé la vie!\"\n\nLes nains applaudissent: \"Bien joué, les amis!\"\n\nMais attendez... où est passée la femme mystérieuse?",
+      "next_scene": "search_woman"
+    },
+    {
+      "id": "search_woman",
+      "type": "narrative",
+      "title": "🔍 LA FEMME A DISPARU",
+      "text": "Vous cherchez la femme encapuchonnée.\n\nSa chambre est vide. La fenêtre est ouverte. Elle est partie!\n\nSur la table, elle a laissé une note:\n\n\"Merci de vous être occupés de ces bandits. Ils me cherchaient. Je suis la baronne Elara, en fuite. Voici une récompense pour votre aide. - E.\"\n\nUne bourse pleine d'or accompagne la note!",
+      "next_scene": "morning_choice"
+    },
+    {
+      "id": "morning_choice",
+      "type": "choice",
+      "title": "🌅 LE MATIN SUIVANT",
+      "description": "Le jour se lève. L'orage est passé. Que faites-vous?",
+      "choices": [
+        {
+          "text": "Partir explorer la mine au nord (quête des nains)",
+          "next_scene": "mine_adventure",
+          "effects": {}
+        },
+        {
+          "text": "Chercher le trésor du Baron Noir (légende du barde)",
+          "next_scene": "treasure_hunt",
+          "effects": {}
+        },
+        {
+          "text": "Reprendre la route",
+          "next_scene": "victory",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "mine_adventure",
+      "type": "narrative",
+      "title": "⛏️ LA MINE ABANDONNÉE",
+      "text": "Vous suivez les indications des nains vers la mine.\n\nL'entrée est sombre et inquiétante. Vous entendez des grognements de gobelins...\n\nC'est une autre aventure qui commence!\n\n(À suivre dans un futur scénario...)",
+      "next_scene": "victory"
+    },
+    {
+      "id": "treasure_hunt",
+      "type": "narrative",
+      "title": "💰 LE TRÉSOR DU BARON NOIR",
+      "text": "Guidés par la chanson du barde, vous partez vers les collines.\n\nVous trouvez des ruines anciennes. Un trésor vous attend peut-être...\n\nMais des dangers aussi!\n\n(À suivre dans un futur scénario...)",
+      "next_scene": "victory"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 AVENTURE ACCOMPLIE!",
+      "text": "L'Auberge du Sanglier Gris est sauvée!\n\nGregor vous offre le gîte et le couvert gratuitement: \"Vous serez toujours les bienvenus ici!\"\n\nLes nains vous proposent de rejoindre leur expédition. Le barde compose une chanson sur vos exploits.\n\nVous avez gagné l'or de la baronne, la reconnaissance de l'auberge, et peut-être de futurs compagnons d'aventure!\n\nVotre réputation grandit sur la route du Nord!",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 400,
+        "items": ["Carte de la Mine", "Carte du Trésor"]
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus par les bandits...\n\nL'Auberge du Sanglier Gris est pillée.",
+      "next_scene": null
+    }
+  ]
+}
+

@@ -1,0 +1,277 @@
+{
+  "scenario_id": "collier_de_zark",
+  "name": "Le Collier de Zark",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "1-2",
+  "recommended_party_size": 3,
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "💎 LA VILLE DE ZARK",
+      "text": "La prospère ville de Zark est en émoi. Le célèbre Collier d'Émeraude, trésor de la famille noble des Ashford, a été dérobé!\n\nLady Ashford vous a convoqués au manoir. \"Mon collier ancestral a été volé lors du bal d'hier soir. Il était dans mon coffre, mais ce matin... plus rien!\"\n\n\"Trouvez le voleur et récupérez le collier. Je vous récompenserai généreusement!\"\n\nVotre enquête commence...",
+      "next_scene": "manor_choice"
+    },
+    {
+      "id": "manor_choice",
+      "type": "choice",
+      "title": "🏰 MANOIR ASHFORD",
+      "description": "Vous êtes dans le grand hall du manoir. Par où commencer l'enquête?",
+      "choices": [
+        {
+          "text": "Interroger les domestiques",
+          "next_scene": "interrogate_servants",
+          "effects": {"clues": 1}
+        },
+        {
+          "text": "Examiner la chambre de Lady Ashford",
+          "next_scene": "examine_bedroom",
+          "effects": {}
+        },
+        {
+          "text": "Interroger les invités du bal",
+          "next_scene": "interrogate_guests",
+          "effects": {}
+        },
+        {
+          "text": "Aller en ville chercher des informations",
+          "next_scene": "go_to_town",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "interrogate_servants",
+      "type": "narrative",
+      "title": "👔 LES DOMESTIQUES",
+      "text": "Vous interrogez les domestiques.\n\nLe majordome: \"Je n'ai rien vu de suspect, messieurs-dames.\"\n\nLa femme de chambre semble nerveuse: \"Je... j'ai vu quelqu'un rôder près de la chambre tard dans la nuit. Un homme en cape sombre.\"\n\nLe cuisinier: \"Un des invités, ce Marcus le marchand, a posé beaucoup de questions sur le collier.\"\n\nVous notez ces indices importants.",
+      "next_scene": "manor_choice"
+    },
+    {
+      "id": "examine_bedroom",
+      "type": "narrative",
+      "title": "🔍 CHAMBRE DE LADY ASHFORD",
+      "text": "Vous examinez attentivement la chambre.\n\nLe coffre n'a pas été forcé - le voleur avait la clé ou connaissait le mécanisme.\n\nVous trouvez un petit bout de tissu noir accroché à la fenêtre. On est entré par là!\n\nSur le rebord de la fenêtre, des traces de boue... menant vers le jardin.\n\nIndice important: le voleur est venu de l'extérieur!",
+      "next_scene": "garden_choice"
+    },
+    {
+      "id": "garden_choice",
+      "type": "choice",
+      "title": "🌳 JARDIN DU MANOIR",
+      "description": "Les traces mènent au jardin. Que faire?",
+      "choices": [
+        {
+          "text": "Suivre les traces",
+          "next_scene": "follow_tracks",
+          "effects": {}
+        },
+        {
+          "text": "Retourner au manoir",
+          "next_scene": "manor_choice",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "follow_tracks",
+      "type": "narrative",
+      "title": "👣 PISTE",
+      "text": "Vous suivez les traces dans le jardin.\n\nElles mènent à un mur d'enceinte bas, facile à escalader. De l'autre côté, elles continuent vers... la ville basse, le quartier des voleurs!\n\nVous avez une destination!",
+      "next_scene": "go_to_town"
+    },
+    {
+      "id": "interrogate_guests",
+      "type": "narrative",
+      "title": "🎭 LES INVITÉS",
+      "text": "Vous interrogez les invités du bal.\n\nMarcus le marchand: \"Je collectionne les bijoux, c'est vrai, mais je ne suis pas un voleur!\"\n\nLa comtesse Vera: \"J'ai vu Marcus admirer le collier avec beaucoup d'insistance.\"\n\nLe baron Keldor: \"Marcus a quitté le bal tôt. Vers 22h. Très suspect!\"\n\nMarcus semble être un suspect principal...",
+      "next_scene": "manor_choice"
+    },
+    {
+      "id": "go_to_town",
+      "type": "narrative",
+      "title": "🏘️ VILLE BASSE",
+      "text": "Vous descendez dans le quartier des voleurs de Zark.\n\nRuelles sombres, tavernes louches, regards méfiants... Vous devez être prudents ici.\n\nVous entendez parler d'un receleur nommé Silas qui opère dans ce quartier.",
+      "next_scene": "town_choice"
+    },
+    {
+      "id": "town_choice",
+      "type": "choice",
+      "title": "🗺️ QUARTIER DES VOLEURS",
+      "description": "Que faire dans le quartier des voleurs?",
+      "choices": [
+        {
+          "text": "Chercher la planque de Silas",
+          "next_scene": "find_silas",
+          "effects": {}
+        },
+        {
+          "text": "Interroger dans les tavernes",
+          "next_scene": "tavern_info",
+          "effects": {}
+        },
+        {
+          "text": "Surveiller les allées sombres",
+          "next_scene": "ambush",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "tavern_info",
+      "type": "narrative",
+      "title": "🍺 TAVERNE DU POIGNARD ROUILLÉ",
+      "text": "Vous entrez dans la taverne la plus louche du quartier.\n\nMoyennant quelques pièces d'or, un ivrogne vous parle: \"Silas? Ouais, j'le connais. Il a sa planque dans l'entrepôt abandonné près des docks. Mais attention, il a des gardes...\"\n\nVous avez trouvé l'adresse!",
+      "next_scene": "warehouse_approach"
+    },
+    {
+      "id": "find_silas",
+      "type": "narrative",
+      "title": "🔎 RECHERCHE",
+      "text": "Vous cherchez la planque de Silas.\n\nAprès avoir interrogé quelques contacts, vous apprenez qu'il opère depuis un entrepôt abandonné près des docks.\n\nVous vous dirigez vers les docks...",
+      "next_scene": "warehouse_approach"
+    },
+    {
+      "id": "ambush",
+      "type": "combat",
+      "title": "⚔️ EMBUSCADE!",
+      "description": "Des bandits vous attaquent dans une ruelle sombre!",
+      "monsters": ["cultist", "cultist"],
+      "on_victory": "after_ambush",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "after_ambush",
+      "type": "narrative",
+      "title": "🗡️ APRÈS L'EMBUSCADE",
+      "text": "Vous fouillez les bandits vaincus.\n\nL'un d'eux portait une note: \"Livraison pour Silas - entrepôt des docks - minuit.\"\n\nVous savez où aller!",
+      "next_scene": "warehouse_approach"
+    },
+    {
+      "id": "warehouse_approach",
+      "type": "narrative",
+      "title": "🏭 ENTREPÔT DES DOCKS",
+      "text": "Vous arrivez devant un vieil entrepôt décrété.\n\nDeux gardes montent la garde devant l'entrée principale. Vous voyez une fenêtre brisée sur le côté.\n\nÀ l'intérieur, vous entendez des voix...",
+      "next_scene": "warehouse_choice"
+    },
+    {
+      "id": "warehouse_choice",
+      "type": "choice",
+      "title": "🚪 PLAN D'APPROCHE",
+      "description": "Comment entrer dans l'entrepôt?",
+      "choices": [
+        {
+          "text": "Attaquer les gardes de front",
+          "next_scene": "frontal_assault",
+          "effects": {}
+        },
+        {
+          "text": "Entrer furtivement par la fenêtre",
+          "next_scene": "stealth_entry",
+          "effects": {}
+        },
+        {
+          "text": "Négocier avec les gardes",
+          "next_scene": "negotiate",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "frontal_assault",
+      "type": "combat",
+      "title": "⚔️ COMBAT CONTRE LES GARDES",
+      "description": "Vous attaquez les gardes!",
+      "monsters": ["cultist", "cultist"],
+      "on_victory": "inside_warehouse",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "stealth_entry",
+      "type": "narrative",
+      "title": "🤫 INFILTRATION",
+      "text": "Vous passez discrètement par la fenêtre brisée.\n\nVous vous retrouvez dans l'entrepôt sombre. Des caisses partout. Vous entendez des voix venant d'une pièce au fond...\n\nVous avancez prudemment.",
+      "next_scene": "inside_warehouse"
+    },
+    {
+      "id": "negotiate",
+      "type": "narrative",
+      "title": "💬 NÉGOCIATION",
+      "text": "Vous tentez de parlementer avec les gardes.\n\n\"Silas ne veut voir personne!\" dit l'un d'eux.\n\nMais pour quelques pièces d'or, ils acceptent de vous laisser passer... \"Mais c'est à vos risques et périls!\"\n\nVous entrez.",
+      "next_scene": "inside_warehouse"
+    },
+    {
+      "id": "inside_warehouse",
+      "type": "narrative",
+      "title": "📦 INTÉRIEUR DE L'ENTREPÔT",
+      "text": "Vous progressez dans l'entrepôt.\n\nAu fond, dans un bureau improvisé, vous voyez Silas le receleur en pleine transaction.\n\nEt sur son bureau... le Collier d'Émeraude brille de mille feux!\n\nIl est temps d'agir!",
+      "next_scene": "silas_confrontation"
+    },
+    {
+      "id": "silas_confrontation",
+      "type": "choice",
+      "title": "💎 CONFRONTATION",
+      "description": "Silas vous a repérés! Que faites-vous?",
+      "choices": [
+        {
+          "text": "L'attaquer pour récupérer le collier",
+          "next_scene": "boss_fight",
+          "effects": {}
+        },
+        {
+          "text": "Tenter de négocier",
+          "next_scene": "negotiate_silas",
+          "effects": {}
+        },
+        {
+          "text": "Voler le collier et fuir",
+          "next_scene": "steal_and_run",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "negotiate_silas",
+      "type": "narrative",
+      "title": "🤝 NÉGOCIATION AVEC SILAS",
+      "text": "Vous tentez de négocier avec Silas.\n\n\"Rendez le collier et nous partons sans violence.\"\n\nSilas ricane: \"Ce collier vaut une fortune! Vous croyez que je vais vous le donner comme ça?\"\n\nIl fait signe à ses hommes. Le combat est inévitable!",
+      "next_scene": "boss_fight"
+    },
+    {
+      "id": "steal_and_run",
+      "type": "narrative",
+      "title": "🏃 COURSE-POURSUITE",
+      "text": "Vous vous précipitez sur le collier et l'attrapez!\n\nSilas hurle: \"Attrapez-les!\"\n\nSes hommes vous poursuivent. Vous devez vous battre!",
+      "next_scene": "boss_fight"
+    },
+    {
+      "id": "boss_fight",
+      "type": "combat",
+      "title": "⚔️ SILAS ET SES HOMMES",
+      "description": "Silas le receleur et ses bandits vous attaquent!\n\n\"Vous ne sortirez pas vivants d'ici!\" crie Silas en dégainant sa dague empoisonnée.",
+      "monsters": ["cult_fanatic", "cultist", "cultist"],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Silas et ses hommes sont vaincus!\n\nVous récupérez le Collier d'Émeraude, intact et brillant. Vous trouvez aussi des documents prouvant que Marcus le marchand était complice du vol.\n\nDe retour au manoir Ashford, Lady Ashford est aux anges: \"Mon collier! Vous l'avez retrouvé! Vous êtes des héros!\"\n\nElle vous récompense généreusement. Marcus est arrêté par les gardes. La justice est rendue!\n\nLe Collier de Zark est de retour à sa place!",
+      "next_scene": null,
+      "rewards": {
+        "gold": 300,
+        "xp": 600,
+        "items": ["Dague Empoisonnée de Silas"]
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus...\n\nLe Collier de Zark restera perdu.",
+      "next_scene": null
+    }
+  ]
+}
+

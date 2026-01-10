@@ -33,11 +33,19 @@ def main():
     print("     Niveau 4 | Durée: 2-3h | Difficulté: Difficile")
     print("     Infiltrez les catacombes et arrêtez un culte nécromantique!")
 
+    print("\n  6. Le Collier de Zark")
+    print("     Niveau 2 | Durée: 1-2h | Difficulté: Moyenne")
+    print("     Enquête sur le vol d'un précieux collier d'émeraude!")
+
+    print("\n  7. L'Auberge du Sanglier Gris")
+    print("     Niveau 1 | Durée: 1-2h | Difficulté: Facile")
+    print("     Une nuit mouvementée dans une auberge sur la route du Nord!")
+
     print("\n" + "=" * 70)
 
     while True:
         try:
-            choice = input("\nChoisissez un scénario (1-5) ou 'q' pour quitter: ").strip()
+            choice = input("\nChoisissez un scénario (1-7) ou 'q' pour quitter: ").strip()
 
             if choice.lower() == 'q':
                 print("\nÀ bientôt, aventurier! 🎲")
@@ -95,8 +103,28 @@ def main():
                 scenario.play()
                 break
 
+            elif choice_num == 6:
+                print("\n💎 Lancement de 'Le Collier de Zark'...")
+                from collier_de_zark_game import CollierDeZarkScenario
+                scenario = CollierDeZarkScenario(
+                    pdf_path="scenarios/Collier-de-Zark.pdf",
+                    use_ncurses=False
+                )
+                scenario.play()
+                break
+
+            elif choice_num == 7:
+                print("\n🍺 Lancement de 'L'Auberge du Sanglier Gris'...")
+                from auberge_sanglier_gris_game import AubergeSanglierGrisScenario
+                scenario = AubergeSanglierGrisScenario(
+                    pdf_path="scenarios/Auberge-du-sanglier-gris.pdf",
+                    use_ncurses=False
+                )
+                scenario.play()
+                break
+
             else:
-                print("❌ Choix invalide. Veuillez entrer 1, 2, 3, 4, 5, ou 'q'")
+                print("❌ Choix invalide. Veuillez entrer 1, 2, 3, 4, 5, 6, 7, ou 'q'")
 
         except ValueError:
             print("❌ Veuillez entrer un nombre valide")

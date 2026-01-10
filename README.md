@@ -52,7 +52,7 @@ python yawning_portal_game.py
 
 ---
 
-## 📖 5 Scénarios Prêts à Jouer
+## 📖 7 Scénarios Prêts à Jouer
 
 ### 🏰 La Chasse aux Gobelins
 - **Niveau** : 3
@@ -102,6 +102,26 @@ python oeil_gruumsh_game.py
 
 ```bash
 python secte_du_crane_game.py
+```
+
+### 💎 Le Collier de Zark
+- **Niveau** : 2
+- **Durée** : 1-2 heures
+- **Difficulté** : Moyenne
+- **Synopsis** : Enquêtez sur le vol d'un précieux collier d'émeraude et retrouvez le voleur !
+
+```bash
+python collier_de_zark_game.py
+```
+
+### 🍺 L'Auberge du Sanglier Gris
+- **Niveau** : 1
+- **Durée** : 1-2 heures
+- **Difficulté** : Facile
+- **Synopsis** : Une nuit d'orage dans une auberge sur la route du Nord. Mais la nuit sera plus mouvementée que prévu !
+
+```bash
+python auberge_sanglier_gris_game.py
 ```
 
 ---
