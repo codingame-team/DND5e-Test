@@ -220,9 +220,10 @@
     },
     {
       "id": "victory",
-      "type": "victory",
+      "type": "narrative",
       "title": "🎉 VICTOIRE!",
-      "description": "L'Oeil de Gruumsh tombe à genoux, vaincu. Sa lance tombe au sol dans un cliquetis métallique.\n\nLes orques survivants fuient dans les montagnes, démoralisés par la mort de leur chef.\n\nVous fouillez le temple et trouvez le trésor accumulé par les raids: or, armes de qualité, et un médaillon sacré volé au temple de la vallée.\n\nDe retour au village, les habitants vous acclament en héros. Le conseil vous offre une généreuse récompense et le titre de Protecteurs de la Vallée!\n\nLes Montagnes de Fer sont à nouveau sûres!",
+      "text": "L'Oeil de Gruumsh tombe à genoux, vaincu. Sa lance tombe au sol dans un cliquetis métallique.\n\nLes orques survivants fuient dans les montagnes, démoralisés par la mort de leur chef.\n\nVous fouillez le temple et trouvez le trésor accumulé par les raids: or, armes de qualité, et un médaillon sacré volé au temple de la vallée.\n\nDe retour au village, les habitants vous acclament en héros. Le conseil vous offre une généreuse récompense et le titre de Protecteurs de la Vallée!\n\nLes Montagnes de Fer sont à nouveau sûres!",
+      "next_scene": null,
       "rewards": {
         "gold": 500,
         "xp": 1200,
@@ -231,9 +232,10 @@
     },
     {
       "id": "game_over",
-      "type": "game_over",
+      "type": "narrative",
       "title": "💀 DÉFAITE",
-      "description": "Vous avez été vaincus par les orques...\n\nLes Montagnes de Fer resteront dangereuses."
+      "text": "Vous avez été vaincus par les orques...\n\nLes Montagnes de Fer resteront dangereuses.",
+      "next_scene": null
     }
   ]
 }

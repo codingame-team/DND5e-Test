@@ -211,9 +211,10 @@
     },
     {
       "id": "victory",
-      "type": "victory",
+      "type": "narrative",
       "title": "🎉 VICTOIRE!",
-      "description": "Le Prêtre de la Mort s'effondre, son bâton se brisant au sol.\n\nLe crâne flottant émet un cri strident puis explose en une pluie de lumière noire qui se dissipe.\n\nLes ombres s'évanouissent. Les cultistes survivants fuient, terrorisés. Le rituel est brisé!\n\nVous trouvez le trésor de la secte: des objets magiques volés, de l'or, et d'anciens grimoires de sorts.\n\nDe retour à Ravencrest, les villageois sauvés témoignent en votre faveur. Le bourgmestre organise une grande fête en votre honneur!\n\n\"Vous avez sauvé notre ville d'un terrible destin. Ravencrest ne vous oubliera jamais!\"\n\nLa Secte du Crâne est définitivement détruite!",
+      "text": "Le Prêtre de la Mort s'effondre, son bâton se brisant au sol.\n\nLe crâne flottant émet un cri strident puis explose en une pluie de lumière noire qui se dissipe.\n\nLes ombres s'évanouissent. Les cultistes survivants fuient, terrorisés. Le rituel est brisé!\n\nVous trouvez le trésor de la secte: des objets magiques volés, de l'or, et d'anciens grimoires de sorts.\n\nDe retour à Ravencrest, les villageois sauvés témoignent en votre faveur. Le bourgmestre organise une grande fête en votre honneur!\n\n\"Vous avez sauvé notre ville d'un terrible destin. Ravencrest ne vous oubliera jamais!\"\n\nLa Secte du Crâne est définitivement détruite!",
+      "next_scene": null,
       "rewards": {
         "gold": 600,
         "xp": 1500,
@@ -222,9 +223,10 @@
     },
     {
       "id": "game_over",
-      "type": "game_over",
+      "type": "narrative",
       "title": "💀 DÉFAITE",
-      "description": "Vous avez été vaincus par la Secte du Crâne...\n\nLe rituel se poursuit et Ravencrest tombe dans les ténèbres."
+      "text": "Vous avez été vaincus par la Secte du Crâne...\n\nLe rituel se poursuit et Ravencrest tombe dans les ténèbres.",
+      "next_scene": null
     }
   ]
 }
