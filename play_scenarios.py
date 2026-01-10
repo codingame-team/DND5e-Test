@@ -25,11 +25,19 @@ def main():
     print("     Niveau 2 | Durée: 2h | Difficulté: Moyenne")
     print("     Pillez une pyramide ancienne et affrontez le Roi Serpent momifié!")
 
+    print("\n  4. L'Oeil de Gruumsh")
+    print("     Niveau 3 | Durée: 2-3h | Difficulté: Moyenne")
+    print("     Affrontez une tribu d'orques dans les Montagnes de Fer!")
+
+    print("\n  5. La Secte du Crâne")
+    print("     Niveau 4 | Durée: 2-3h | Difficulté: Difficile")
+    print("     Infiltrez les catacombes et arrêtez un culte nécromantique!")
+
     print("\n" + "=" * 70)
 
     while True:
         try:
-            choice = input("\nChoisissez un scénario (1-3) ou 'q' pour quitter: ").strip()
+            choice = input("\nChoisissez un scénario (1-5) ou 'q' pour quitter: ").strip()
 
             if choice.lower() == 'q':
                 print("\nÀ bientôt, aventurier! 🎲")
@@ -67,8 +75,24 @@ def main():
                 scenario.play()
                 break
 
+            elif choice_num == 4:
+                print("\n👁️ Lancement de 'L'Oeil de Gruumsh'...")
+                from oeil_gruumsh_game import OeilDeGruumshScenario
+                scenario = OeilDeGruumshScenario()
+                party = scenario.build_custom_party()
+                scenario.run(party)
+                break
+
+            elif choice_num == 5:
+                print("\n💀 Lancement de 'La Secte du Crâne'...")
+                from secte_du_crane_game import SecteDuCraneScenario
+                scenario = SecteDuCraneScenario()
+                party = scenario.build_custom_party()
+                scenario.run(party)
+                break
+
             else:
-                print("❌ Choix invalide. Veuillez entrer 1, 2, 3, ou 'q'")
+                print("❌ Choix invalide. Veuillez entrer 1, 2, 3, 4, 5, ou 'q'")
 
         except ValueError:
             print("❌ Veuillez entrer un nombre valide")

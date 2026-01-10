@@ -1,0 +1,231 @@
+{
+  "scenario_id": "secte_du_crane",
+  "name": "La Secte du Crâne",
+  "level": 4,
+  "difficulty": "hard",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🌃 VILLE DE RAVENCREST",
+      "text": "La paisible ville de Ravencrest est troublée par d'étranges événements.\n\nDes disparitions mystérieuses, des symboles inquiétants gravés sur les murs, des chuchotements nocturnes... Les habitants parlent à voix basse d'une secte du Crâne qui opérerait dans les ombres.\n\nLe bourgmestre, désespéré, vous a convoqués: \"Des citoyens disparaissent la nuit. Nous avons trouvé ce symbole près des lieux de disparition\" - il vous montre un crâne stylisé entouré de flammes noires.\n\n\"On dit que la secte se réunit dans les catacombes sous la vieille église abandonnée. Aidez-nous, je vous en prie!\"\n\nVotre enquête commence...",
+      "next_scene": "town_choice"
+    },
+    {
+      "id": "town_choice",
+      "type": "choice",
+      "title": "🏘️ PLACE DE LA VILLE",
+      "description": "Vous êtes sur la place centrale. Que faire?",
+      "choices": [
+        {
+          "text": "Interroger les habitants",
+          "next_scene": "gather_info",
+          "effects": {"reputation": 1, "npcs_met": 1}
+        },
+        {
+          "text": "Visiter le marchand",
+          "next_scene": "merchant_1",
+          "effects": {}
+        },
+        {
+          "text": "Inspecter les lieux de disparition",
+          "next_scene": "investigation",
+          "effects": {}
+        },
+        {
+          "text": "Se rendre à l'église abandonnée",
+          "next_scene": "church",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "gather_info",
+      "type": "narrative",
+      "title": "📝 TÉMOIGNAGES",
+      "text": "Les habitants vous parlent avec crainte de la secte.\n\n\"Mon voisin a disparu il y a trois nuits. Le lendemain, nous avons trouvé ce symbole de crâne sur sa porte!\"\n\"J'ai vu des silhouettes encapuchonnées se diriger vers la vieille église, tard dans la nuit.\"\n\"On entend parfois des chants étranges venant des catacombes...\"\n\"Un garde dit avoir vu des ombres vivantes roder la nuit!\"\n\nLes témoignages confirment: la secte opère depuis les catacombes.",
+      "next_scene": "town_choice"
+    },
+    {
+      "id": "merchant_1",
+      "type": "merchant",
+      "title": "🛒 BOUTIQUE D'AVENTURIERS",
+      "merchant_id": "village",
+      "next_scene": "town_choice"
+    },
+    {
+      "id": "investigation",
+      "type": "narrative",
+      "title": "🔍 ENQUÊTE",
+      "text": "Vous inspectez les maisons des disparus.\n\nPartout, le même symbole de crâne. Vous trouvez aussi des traces de lutte et... des marques de griffes sur les murs.\n\nUn vieux livre poussiéreux attire votre attention. Il parle d'un culte ancien qui vénérait la mort et cherchait l'immortalité par la nécromancie.\n\n\"Le Prêtre de la Mort mène le rituel du Crâne Éternel...\" lisez-vous avant que la page ne se déchire.",
+      "next_scene": "town_choice"
+    },
+    {
+      "id": "church",
+      "type": "narrative",
+      "title": "⛪ ÉGLISE ABANDONNÉE",
+      "text": "L'ancienne église se dresse, lugubre, sous la lune.\n\nSes vitraux sont brisés, ses portes pendent de leurs gonds. Une atmosphère oppressante règne.\n\nÀ l'intérieur, vous trouvez l'entrée des catacombes - une trappe de pierre entrouverte. Des escaliers descendent dans les ténèbres.\n\nUne lueur verdâtre émane des profondeurs.",
+      "next_scene": "church_choice"
+    },
+    {
+      "id": "church_choice",
+      "type": "choice",
+      "title": "🚪 ENTRÉE DES CATACOMBES",
+      "description": "Comment voulez-vous procéder?",
+      "choices": [
+        {
+          "text": "Descendre immédiatement",
+          "next_scene": "catacombs_entrance",
+          "effects": {}
+        },
+        {
+          "text": "Se reposer avant de descendre",
+          "next_scene": "rest_1",
+          "effects": {}
+        },
+        {
+          "text": "Retourner en ville chercher de l'aide",
+          "next_scene": "town_choice",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "rest_1",
+      "type": "rest",
+      "title": "💤 REPOS",
+      "rest_type": "short",
+      "next_scene": "church_choice"
+    },
+    {
+      "id": "catacombs_entrance",
+      "type": "narrative",
+      "title": "🕳️ CATACOMBES",
+      "text": "Vous descendez dans les catacombes.\n\nDes niches funéraires tapissent les murs. L'air est froid et sent la mort. Des torches magiques aux flammes vertes éclairent faiblement les couloirs.\n\nVous entendez des voix psalmodier au loin... et des pas furtifs derrière vous!",
+      "next_scene": "cultist_ambush"
+    },
+    {
+      "id": "cultist_ambush",
+      "type": "combat",
+      "title": "⚔️ EMBUSCADE!",
+      "description": "Des cultistes encapuchonnés surgissent de l'ombre!",
+      "monsters": ["cultist", "cultist", "cultist"],
+      "on_victory": "after_cultists",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "after_cultists",
+      "type": "narrative",
+      "title": "📜 INDICES",
+      "text": "Vous fouillez les corps des cultistes. L'un d'eux portait un parchemin:\n\n\"Le rituel approche. Le Prêtre de la Mort a besoin de trois âmes de plus. Les ombres garderont la chambre du rituel. Gloire au Crâne Éternel!\"\n\nVous comprenez que vous devez faire vite!",
+      "next_scene": "catacombs_explore"
+    },
+    {
+      "id": "catacombs_explore",
+      "type": "choice",
+      "title": "🗝️ CORRIDORS DES CATACOMBES",
+      "description": "Les couloirs s'étendent dans plusieurs directions. Vous entendez des chants venant de l'est.",
+      "choices": [
+        {
+          "text": "Suivre les chants",
+          "next_scene": "ritual_chamber_approach",
+          "effects": {}
+        },
+        {
+          "text": "Explorer les salles latérales",
+          "next_scene": "side_chambers",
+          "effects": {}
+        },
+        {
+          "text": "Chercher les prisonniers",
+          "next_scene": "prison_cells",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "side_chambers",
+      "type": "narrative",
+      "title": "💀 SALLES FUNÉRAIRES",
+      "text": "Vous explorez les salles latérales. Des sarcophages anciens, des ossements...\n\nVous trouvez un coffre contenant des potions de soin et des parchemins de sorts. Mais en ouvrant le coffre, vous réveillez des ombres gardiennes!",
+      "next_scene": "shadow_combat"
+    },
+    {
+      "id": "shadow_combat",
+      "type": "combat",
+      "title": "👻 OMBRES GARDIENNES",
+      "description": "Des ombres spectrales se matérialisent et attaquent!",
+      "monsters": ["shadow", "shadow"],
+      "on_victory": "catacombs_explore",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "prison_cells",
+      "type": "narrative",
+      "title": "⛓️ CELLULES",
+      "text": "Vous trouvez les cellules où sont emprisonnés les disparus!\n\nTrois villageois terrifiés sont enchaînés. \"Sauvez-nous! Ils vont nous sacrifier ce soir!\"\n\nVous brisez leurs chaînes. \"Le Prêtre est dans la grande chambre avec ses fanatiques. Ils préparent le rituel!\"\n\nLes prisonniers s'enfuient par un passage secret vers la surface.",
+      "next_scene": "ritual_chamber_approach"
+    },
+    {
+      "id": "ritual_chamber_approach",
+      "type": "narrative",
+      "title": "🔮 APPROCHE DE LA CHAMBRE DU RITUEL",
+      "text": "Vous arrivez devant une grande porte ornée de symboles nécromantiques.\n\nLes chants sont maintenant très proches. Une lueur noire palpite sous la porte.\n\nVous entendez la voix du Prêtre: \"Le Crâne Éternel s'éveillera! Les ombres nous serviront! La mort nous donnera la vie éternelle!\"",
+      "next_scene": "final_choice"
+    },
+    {
+      "id": "final_choice",
+      "type": "choice",
+      "title": "⚔️ DERNIERS PRÉPARATIFS",
+      "description": "C'est le moment de la confrontation finale!",
+      "choices": [
+        {
+          "text": "Se reposer et se préparer",
+          "next_scene": "rest_2",
+          "effects": {}
+        },
+        {
+          "text": "Enfoncer la porte!",
+          "next_scene": "boss_fight",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "rest_2",
+      "type": "rest",
+      "title": "💤 DERNIERS PRÉPARATIFS",
+      "rest_type": "short",
+      "next_scene": "final_choice"
+    },
+    {
+      "id": "boss_fight",
+      "type": "combat",
+      "title": "💀 LE PRÊTRE DE LA MORT",
+      "description": "Vous enfoncez la porte!\n\nLa chambre rituelle est immense. Un crâne géant flotte au centre, entouré d'énergie nécromantique.\n\nLe Prêtre de la Mort se tourne vers vous, entouré de ses fanatiques et d'ombres invoquées.\n\n\"Vous êtes trop tard! Le rituel est presque complet! Vous serez les derniers sacrifices!\"",
+      "monsters": ["death_priest", "cult_fanatic", "shadow", "shadow"],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "victory",
+      "title": "🎉 VICTOIRE!",
+      "description": "Le Prêtre de la Mort s'effondre, son bâton se brisant au sol.\n\nLe crâne flottant émet un cri strident puis explose en une pluie de lumière noire qui se dissipe.\n\nLes ombres s'évanouissent. Les cultistes survivants fuient, terrorisés. Le rituel est brisé!\n\nVous trouvez le trésor de la secte: des objets magiques volés, de l'or, et d'anciens grimoires de sorts.\n\nDe retour à Ravencrest, les villageois sauvés témoignent en votre faveur. Le bourgmestre organise une grande fête en votre honneur!\n\n\"Vous avez sauvé notre ville d'un terrible destin. Ravencrest ne vous oubliera jamais!\"\n\nLa Secte du Crâne est définitivement détruite!",
+      "rewards": {
+        "gold": 600,
+        "xp": 1500,
+        "items": ["Grimoire de Nécromancie", "Amulette de Protection", "Bâton du Prêtre"]
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "game_over",
+      "title": "💀 DÉFAITE",
+      "description": "Vous avez été vaincus par la Secte du Crâne...\n\nLe rituel se poursuit et Ravencrest tombe dans les ténèbres."
+    }
+  ]
+}
+

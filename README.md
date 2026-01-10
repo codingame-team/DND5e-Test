@@ -52,7 +52,7 @@ python yawning_portal_game.py
 
 ---
 
-## 📖 3 Scénarios Prêts à Jouer
+## 📖 5 Scénarios Prêts à Jouer
 
 ### 🏰 La Chasse aux Gobelins
 - **Niveau** : 3
@@ -61,8 +61,7 @@ python yawning_portal_game.py
 - **Synopsis** : Sauvez le Village de Brume terrorisé par des gobelins !
 
 ```bash
-python play_scenarios.py
-# Choisir option 1
+python chasse_gobelins_refactored.py
 ```
 
 ### 🏛️ The Sunless Citadel
@@ -72,8 +71,7 @@ python play_scenarios.py
 - **Synopsis** : Explorez une citadelle engloutie et détruisez l'arbre maudit !
 
 ```bash
-python play_scenarios.py
-# Choisir option 2
+python yawning_portal_game.py
 ```
 
 ### 🔺 La Tombe des Rois Serpents
@@ -83,8 +81,27 @@ python play_scenarios.py
 - **Synopsis** : Pillez une pyramide ancienne et affrontez le Roi Serpent momifié !
 
 ```bash
-python play_scenarios.py
-# Choisir option 3
+python tombe_rois_serpents_game.py
+```
+
+### 👁️ L'Oeil de Gruumsh
+- **Niveau** : 3
+- **Durée** : 2-3 heures
+- **Difficulté** : Moyenne
+- **Synopsis** : Affrontez une tribu d'orques menée par un redoutable Oeil de Gruumsh dans les Montagnes de Fer !
+
+```bash
+python oeil_gruumsh_game.py
+```
+
+### 💀 La Secte du Crâne
+- **Niveau** : 4
+- **Durée** : 2-3 heures
+- **Difficulté** : Difficile
+- **Synopsis** : Infiltrez les catacombes de Ravencrest et arrêtez un culte nécromantique avant qu'il ne soit trop tard !
+
+```bash
+python secte_du_crane_game.py
 ```
 
 ---

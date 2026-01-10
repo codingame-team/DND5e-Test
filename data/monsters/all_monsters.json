@@ -242,6 +242,280 @@
         "range": "80/320 ft"
       }
     ]
+  },
+  "orc": {
+    "name": "Orc",
+    "size": "Medium",
+    "type": "humanoid",
+    "alignment": "chaotic evil",
+    "armor_class": 13,
+    "hit_points": 15,
+    "hit_dice": "2d8+6",
+    "abilities": {
+      "str": 16,
+      "dex": 12,
+      "con": 16,
+      "int": 7,
+      "wis": 11,
+      "cha": 10
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 0.5,
+    "xp": 100,
+    "actions": [
+      {
+        "name": "Greataxe",
+        "attack_bonus": 5,
+        "damage_dice": "1d12",
+        "damage_bonus": 3,
+        "damage_type": "slashing"
+      },
+      {
+        "name": "Javelin",
+        "attack_bonus": 5,
+        "damage_dice": "1d6",
+        "damage_bonus": 3,
+        "damage_type": "piercing",
+        "range": "30/120 ft"
+      }
+    ],
+    "special_abilities": [
+      {
+        "name": "Aggressive",
+        "desc": "As a bonus action, the orc can move up to its speed toward a hostile creature that it can see"
+      }
+    ]
+  },
+  "orc_eye_of_gruumsh": {
+    "name": "Orc Eye of Gruumsh",
+    "size": "Medium",
+    "type": "humanoid",
+    "alignment": "chaotic evil",
+    "armor_class": 16,
+    "hit_points": 45,
+    "hit_dice": "6d8+18",
+    "abilities": {
+      "str": 16,
+      "dex": 12,
+      "con": 16,
+      "int": 9,
+      "wis": 13,
+      "cha": 12
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 2,
+    "xp": 450,
+    "actions": [
+      {
+        "name": "Spear",
+        "attack_bonus": 5,
+        "damage_dice": "1d6",
+        "damage_bonus": 3,
+        "damage_type": "piercing"
+      },
+      {
+        "name": "Spear (Two-Handed)",
+        "attack_bonus": 5,
+        "damage_dice": "1d8",
+        "damage_bonus": 3,
+        "damage_type": "piercing"
+      }
+    ],
+    "spellcasting": {
+      "ability": "wis",
+      "dc": 11,
+      "attack_bonus": 3,
+      "spells": {
+        "0": ["guidance", "resistance", "thaumaturgy"],
+        "1": ["bless", "command", "3/day"],
+        "2": ["augury", "spiritual_weapon", "2/day"]
+      }
+    },
+    "special_abilities": [
+      {
+        "name": "Aggressive",
+        "desc": "As a bonus action, the orc can move up to its speed toward a hostile creature that it can see"
+      },
+      {
+        "name": "Gruumsh's Fury",
+        "desc": "The orc deals an extra 4 (1d8) damage when it hits with a weapon attack (included in the attacks)"
+      }
+    ]
+  },
+  "cultist": {
+    "name": "Cultist",
+    "size": "Medium",
+    "type": "humanoid",
+    "alignment": "neutral evil",
+    "armor_class": 12,
+    "hit_points": 9,
+    "hit_dice": "2d8",
+    "abilities": {
+      "str": 11,
+      "dex": 12,
+      "con": 10,
+      "int": 10,
+      "wis": 11,
+      "cha": 10
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 0.125,
+    "xp": 25,
+    "actions": [
+      {
+        "name": "Scimitar",
+        "attack_bonus": 3,
+        "damage_dice": "1d6",
+        "damage_bonus": 1,
+        "damage_type": "slashing"
+      }
+    ]
+  },
+  "cult_fanatic": {
+    "name": "Cult Fanatic",
+    "size": "Medium",
+    "type": "humanoid",
+    "alignment": "neutral evil",
+    "armor_class": 13,
+    "hit_points": 33,
+    "hit_dice": "6d8+6",
+    "abilities": {
+      "str": 11,
+      "dex": 14,
+      "con": 12,
+      "int": 10,
+      "wis": 13,
+      "cha": 14
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 2,
+    "xp": 450,
+    "actions": [
+      {
+        "name": "Dagger",
+        "attack_bonus": 4,
+        "damage_dice": "1d4",
+        "damage_bonus": 2,
+        "damage_type": "piercing"
+      }
+    ],
+    "spellcasting": {
+      "ability": "wis",
+      "dc": 11,
+      "attack_bonus": 3,
+      "spells": {
+        "0": ["light", "sacred_flame", "thaumaturgy"],
+        "1": ["command", "inflict_wounds", "shield_of_faith", "4/day"],
+        "2": ["hold_person", "spiritual_weapon", "2/day"]
+      }
+    },
+    "special_abilities": [
+      {
+        "name": "Dark Devotion",
+        "desc": "The fanatic has advantage on saving throws against being charmed or frightened"
+      }
+    ]
+  },
+  "shadow": {
+    "name": "Shadow",
+    "size": "Medium",
+    "type": "undead",
+    "alignment": "chaotic evil",
+    "armor_class": 12,
+    "hit_points": 16,
+    "hit_dice": "3d8+3",
+    "abilities": {
+      "str": 6,
+      "dex": 14,
+      "con": 13,
+      "int": 6,
+      "wis": 10,
+      "cha": 8
+    },
+    "speed": {"walk": "40 ft"},
+    "challenge_rating": 0.5,
+    "xp": 100,
+    "damage_vulnerabilities": ["radiant"],
+    "damage_resistances": ["acid", "cold", "fire", "lightning", "thunder", "bludgeoning", "piercing", "slashing from nonmagical attacks"],
+    "damage_immunities": ["necrotic", "poison"],
+    "condition_immunities": ["exhaustion", "frightened", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained"],
+    "actions": [
+      {
+        "name": "Strength Drain",
+        "attack_bonus": 4,
+        "damage_dice": "2d6",
+        "damage_bonus": 2,
+        "damage_type": "necrotic",
+        "additional_effect": "Target's Strength score is reduced by 1d4. Dies if this reduces Strength to 0"
+      }
+    ],
+    "special_abilities": [
+      {
+        "name": "Amorphous",
+        "desc": "The shadow can move through a space as narrow as 1 inch wide without squeezing"
+      },
+      {
+        "name": "Shadow Stealth",
+        "desc": "While in dim light or darkness, the shadow can take the Hide action as a bonus action"
+      },
+      {
+        "name": "Sunlight Weakness",
+        "desc": "While in sunlight, the shadow has disadvantage on attack rolls, ability checks, and saving throws"
+      }
+    ]
+  },
+  "death_priest": {
+    "name": "Death Priest",
+    "size": "Medium",
+    "type": "humanoid",
+    "alignment": "neutral evil",
+    "armor_class": 15,
+    "hit_points": 52,
+    "hit_dice": "8d8+16",
+    "abilities": {
+      "str": 10,
+      "dex": 14,
+      "con": 14,
+      "int": 12,
+      "wis": 16,
+      "cha": 13
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 3,
+    "xp": 700,
+    "actions": [
+      {
+        "name": "Staff",
+        "attack_bonus": 2,
+        "damage_dice": "1d6",
+        "damage_bonus": 0,
+        "damage_type": "bludgeoning"
+      },
+      {
+        "name": "Necrotic Touch",
+        "attack_bonus": 5,
+        "damage_dice": "3d6",
+        "damage_bonus": 0,
+        "damage_type": "necrotic"
+      }
+    ],
+    "spellcasting": {
+      "ability": "wis",
+      "dc": 13,
+      "attack_bonus": 5,
+      "spells": {
+        "0": ["chill_touch", "mending", "thaumaturgy"],
+        "1": ["false_life", "inflict_wounds", "ray_of_sickness", "4/day"],
+        "2": ["blindness_deafness", "ray_of_enfeeblement", "spiritual_weapon", "3/day"],
+        "3": ["animate_dead", "bestow_curse", "2/day"]
+      }
+    },
+    "special_abilities": [
+      {
+        "name": "Dark Devotion",
+        "desc": "The priest has advantage on saving throws against being charmed or frightened"
+      }
+    ]
   }
 }
 

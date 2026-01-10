@@ -1,0 +1,240 @@
+{
+  "scenario_id": "oeil_de_gruumsh",
+  "name": "L'Oeil de Gruumsh",
+  "level": 3,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🏔️ MONTAGNES DE FER",
+      "text": "Les Montagnes de Fer sont en proie à une nouvelle menace. Une tribu d'orques, menée par un redoutable Oeil de Gruumsh, a établi son campement dans les hauteurs.\n\nCes guerriers sanguinaires attaquent les caravanes marchandes et pillent les villages de la vallée. Le conseil des anciens vous a choisis pour mettre fin à cette menace.\n\n\"L'Oeil de Gruumsh est un prêtre fanatique du dieu orque\", vous prévient un vétéran blessé. \"Il possède des pouvoirs sombres et ses guerriers sont redoutables. Soyez prudents!\"\n\nVotre mission commence...",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "village_choice",
+      "type": "choice",
+      "title": "🏘️ VILLAGE DE LA VALLÉE",
+      "description": "Vous êtes au village. Que faire avant de partir en montagne?",
+      "choices": [
+        {
+          "text": "Interroger les survivants",
+          "next_scene": "gather_info",
+          "effects": {"reputation": 1, "npcs_met": 1}
+        },
+        {
+          "text": "Visiter le forgeron",
+          "next_scene": "merchant_1",
+          "effects": {}
+        },
+        {
+          "text": "Se reposer et préparer l'équipement",
+          "next_scene": "rest_1",
+          "effects": {}
+        },
+        {
+          "text": "Partir vers les montagnes",
+          "next_scene": "mountain_path",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "gather_info",
+      "type": "narrative",
+      "title": "📝 TÉMOIGNAGES",
+      "text": "Les survivants des attaques vous décrivent les orques avec terreur.\n\n\"Ils sont féroces! Ils ne font pas de quartier!\"\n\"Leur chef, l'Oeil de Gruumsh, porte une armure ornée d'un œil rouge. Il invoque des malédictions!\"\n\"Leur campement est dans les hauteurs, près de l'ancien temple abandonné.\"\n\"Méfiez-vous, ils ont posté des sentinelles sur le chemin de la montagne.\"\n\nVous en savez maintenant plus sur vos ennemis.",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "merchant_1",
+      "type": "merchant",
+      "title": "⚒️ FORGE DU VILLAGE",
+      "merchant_id": "village",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "rest_1",
+      "type": "rest",
+      "title": "💤 REPOS",
+      "rest_type": "short",
+      "next_scene": "village_choice"
+    },
+    {
+      "id": "mountain_path",
+      "type": "choice",
+      "title": "⛰️ SENTIER DE MONTAGNE",
+      "description": "Vous commencez l'ascension vers le campement orque.\n\nLe sentier est escarpé et rocailleux. Au loin, vous apercevez de la fumée - probablement le campement.\n\nSoudain, vous entendez des grognements gutturaux. Des sentinelles orques patrouillent!",
+      "choices": [
+        {
+          "text": "Tenter de les éviter furtivement",
+          "next_scene": "stealth_check",
+          "effects": {}
+        },
+        {
+          "text": "Les affronter directement",
+          "next_scene": "orc_patrol",
+          "effects": {}
+        },
+        {
+          "text": "Chercher un passage alternatif",
+          "next_scene": "alternative_path",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "stealth_check",
+      "type": "narrative",
+      "title": "🤫 FURTIVITÉ",
+      "text": "Vous tentez de passer discrètement, mais les orques ont l'ouïe fine!\n\nUn des orques renifle l'air et pousse un cri de guerre. Ils vous ont repérés!",
+      "next_scene": "orc_patrol"
+    },
+    {
+      "id": "orc_patrol",
+      "type": "combat",
+      "title": "⚔️ PATROUILLE ORQUE",
+      "description": "Deux guerriers orques chargent, haches brandies!",
+      "monsters": ["orc", "orc"],
+      "on_victory": "after_patrol",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "alternative_path",
+      "type": "narrative",
+      "title": "🗻 PASSAGE DÉTOURNÉ",
+      "text": "Vous trouvez un passage rocheux qui contourne les sentinelles.\n\nLe chemin est dangereux et glissant, mais vous évitez le combat. Vous progressez vers le campement.",
+      "next_scene": "orc_camp"
+    },
+    {
+      "id": "after_patrol",
+      "type": "narrative",
+      "title": "⚔️ APRÈS LE COMBAT",
+      "text": "Les orques sont vaincus. Vous fouillez leurs corps et trouvez un plan rudimentaire du campement.\n\nVous remarquez qu'ils gardaient l'accès à une grotte qui semble mener directement au cœur du campement.",
+      "next_scene": "cave_or_camp"
+    },
+    {
+      "id": "cave_or_camp",
+      "type": "choice",
+      "title": "🔱 DEUX CHEMINS",
+      "description": "Vous avez le choix:",
+      "choices": [
+        {
+          "text": "Entrer par la grotte",
+          "next_scene": "cave_entrance",
+          "effects": {}
+        },
+        {
+          "text": "Attaquer le campement de front",
+          "next_scene": "orc_camp",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "cave_entrance",
+      "type": "narrative",
+      "title": "🕳️ GROTTE SOMBRE",
+      "text": "Vous entrez dans la grotte. L'obscurité est totale.\n\nVous avancez prudemment, torches en main. La grotte débouche sur une chambre naturelle... où vous tombez nez à nez avec trois orques en pleine réunion!",
+      "next_scene": "cave_combat"
+    },
+    {
+      "id": "cave_combat",
+      "type": "combat",
+      "title": "⚔️ EMBUSCADE DANS LA GROTTE",
+      "description": "Les orques rugissent et attaquent!",
+      "monsters": ["orc", "orc", "orc"],
+      "on_victory": "temple_approach",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "orc_camp",
+      "type": "narrative",
+      "title": "⛺ CAMPEMENT ORQUE",
+      "text": "Vous approchez du campement principal.\n\nPlusieurs tentes en peaux de bêtes sont dressées. Un grand feu brûle au centre. Vous voyez des orques s'entraîner au combat.\n\nAu fond, près de l'ancien temple, se dresse la tente de l'Oeil de Gruumsh, ornée de symboles sinistres.",
+      "next_scene": "camp_combat"
+    },
+    {
+      "id": "camp_combat",
+      "type": "combat",
+      "title": "⚔️ COMBAT DANS LE CAMP",
+      "description": "Les orques vous repèrent et donnent l'alerte!",
+      "monsters": ["orc", "orc", "orc", "orc"],
+      "on_victory": "temple_approach",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "temple_approach",
+      "type": "narrative",
+      "title": "🏛️ L'ANCIEN TEMPLE",
+      "text": "Après avoir vaincu les orques du campement, vous approchez de l'ancien temple.\n\nC'est une structure en pierre, à moitié effondrée, couverte de symboles orques et de crânes. Une lueur rouge émane de l'intérieur.\n\nVous entendez une voix gutturale psalmodier dans une langue étrangère.",
+      "next_scene": "temple_choice"
+    },
+    {
+      "id": "temple_choice",
+      "type": "choice",
+      "title": "🚪 ENTRÉE DU TEMPLE",
+      "description": "Comment voulez-vous entrer?",
+      "choices": [
+        {
+          "text": "Entrer discrètement",
+          "next_scene": "temple_sneak",
+          "effects": {}
+        },
+        {
+          "text": "Entrer en force!",
+          "next_scene": "boss_fight",
+          "effects": {}
+        },
+        {
+          "text": "Se reposer avant le combat final",
+          "next_scene": "rest_2",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "rest_2",
+      "type": "rest",
+      "title": "💤 REPOS AVANT LE COMBAT",
+      "rest_type": "short",
+      "next_scene": "temple_choice"
+    },
+    {
+      "id": "temple_sneak",
+      "type": "narrative",
+      "title": "🤫 APPROCHE FURTIVE",
+      "text": "Vous tentez d'entrer discrètement, mais l'Oeil de Gruumsh vous attendait!\n\n\"Gruumsh voit tout! Vous ne pouvez pas me surprendre, mortels!\"\n\nLe combat commence dans des conditions défavorables!",
+      "next_scene": "boss_fight"
+    },
+    {
+      "id": "boss_fight",
+      "type": "combat",
+      "title": "👁️ L'OEIL DE GRUUMSH",
+      "description": "L'Oeil de Gruumsh se dresse devant vous, entouré de ses derniers guerriers!\n\n\"Au nom de Gruumsh, vous allez périr!\" rugit-il en levant sa lance.",
+      "monsters": ["orc_eye_of_gruumsh", "orc", "orc"],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "victory",
+      "title": "🎉 VICTOIRE!",
+      "description": "L'Oeil de Gruumsh tombe à genoux, vaincu. Sa lance tombe au sol dans un cliquetis métallique.\n\nLes orques survivants fuient dans les montagnes, démoralisés par la mort de leur chef.\n\nVous fouillez le temple et trouvez le trésor accumulé par les raids: or, armes de qualité, et un médaillon sacré volé au temple de la vallée.\n\nDe retour au village, les habitants vous acclament en héros. Le conseil vous offre une généreuse récompense et le titre de Protecteurs de la Vallée!\n\nLes Montagnes de Fer sont à nouveau sûres!",
+      "rewards": {
+        "gold": 500,
+        "xp": 1200,
+        "items": ["Médaillon Sacré", "Hache Orque de Maître"]
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "game_over",
+      "title": "💀 DÉFAITE",
+      "description": "Vous avez été vaincus par les orques...\n\nLes Montagnes de Fer resteront dangereuses."
+    }
+  ]
+}
+
