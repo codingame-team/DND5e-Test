@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![dnd-5e-core](https://img.shields.io/badge/dnd--5e--core-0.1.8-success.svg)](https://pypi.org/project/dnd-5e-core/)
 
-**Créez et jouez des aventures D&D 5e sans coder !**
+**Créez et jouez des aventures D&D 5e en utilisant le système de scénarios JSON !**
 
-Système complet de création de scénarios basés sur JSON utilisant le package [dnd-5e-core](https://github.com/codingame-team/dnd-5e-core). Créez des aventures narratives interactives avec combats, choix, marchands et plus encore.
+Système complet de création de scénarios basés sur JSON utilisant le package [dnd-5e-core](https://pypi.org/project/dnd-5e-core/). Créez des aventures narratives interactives avec combats, choix, marchands et plus encore.
 
 ---
 
@@ -34,17 +34,20 @@ git clone https://github.com/codingame-team/DnD5e-Scenarios.git
 cd DnD5e-Scenarios
 
 # 3. Jouer un scénario !
-python play_scenario_from_json.py
+python chasse_gobelins_refactored.py
 ```
 
 ### Lancer un scénario
 
 ```bash
-# Lanceur interactif - choisissez parmi 3 aventures
-python play_scenarios.py
+# La Chasse aux Gobelins (niveau 3)
+python chasse_gobelins_refactored.py
 
-# Ou lancer directement un scénario JSON
-python play_scenario_from_json.py
+# La Tombe des Rois Serpents (niveau 2)
+python tombe_rois_serpents_game.py
+
+# Tales from the Yawning Portal - Sunless Citadel (niveau 1)
+python yawning_portal_game.py
 ```
 
 ---

@@ -1,173 +1,128 @@
 {
   "scenario_id": "sunless_citadel",
-  "name": "Tales from the Yawning Portal - The Sunless Citadel",
+  "name": "The Sunless Citadel",
   "level": 1,
   "difficulty": "medium",
   "duration_hours": "2-3",
-  "recommended_party_size": 3,
-  "key_features": [
-    "PNJ allié (Erky Timbers)",
-    "Entrée secrète optionnelle",
-    "Boss végétal unique",
-    "Exploration de donjon classique"
-  ],
+  "recommended_party_size": 4,
   "scenes": [
     {
       "id": "intro",
       "type": "narrative",
-      "title": "🏰 LA CITADELLE SANS SOLEIL",
-      "text": "Vous vous tenez devant l'entrée de la Citadelle Sans Soleil, une forteresse engloutie qui a sombré dans la terre il y a des siècles.\n\nLes villageois d'Oakhurst parlent d'aventuriers disparus, de gobelins malveillants, et d'un arbre maudit qui produit des fruits magiques...\n\nL'air est froid et humide. L'entrée béante semble vous appeler.",
-      "next_scene": "entrance"
+      "title": "🏛️ LA CITADELLE ENSOLEILLÉE",
+      "text": "Vous vous tenez au bord d'un gouffre où les ruines d'une ancienne forteresse s'enfoncent dans les ténèbres.\n\nLa Citadelle Sans Soleil - autrefois un avant-poste brillant, maintenant avalé par la terre elle-même.\n\nDes rumeurs parlent d'un druide maléfique qui habite les profondeurs, cultivant des arbres maudits qui produisent des pommes mortelles.\n\nUne corde descend dans l'obscurité. Êtes-vous prêts?",
+      "next_scene": "entrance_choice"
     },
     {
-      "id": "entrance",
+      "id": "entrance_choice",
       "type": "choice",
-      "title": "🚪 ENTRÉE DE LA CITADELLE",
-      "description": "Comment voulez-vous entrer?",
+      "title": "⛰️ BORD DU GOUFFRE",
+      "description": "Vous êtes au bord du gouffre. Comment descendez-vous?",
       "choices": [
         {
-          "text": "Descendre prudemment par l'ancien escalier",
-          "next_scene": "main_hall",
+          "text": "Descendre par la corde",
+          "next_scene": "rope_descent",
           "effects": {}
         },
         {
-          "text": "Chercher une entrée alternative",
-          "next_scene": "side_entrance",
-          "effects": {"exploration": 1}
+          "text": "Chercher un autre chemin",
+          "next_scene": "search_path",
+          "effects": {}
         },
         {
-          "text": "Se reposer avant d'entrer",
-          "next_scene": "rest_entrance",
+          "text": "Examiner les alentours",
+          "next_scene": "examine_area",
+          "effects": {"locations_visited": 1}
+        }
+      ]
+    },
+    {
+      "id": "examine_area",
+      "type": "narrative",
+      "title": "🔍 EXPLORATION",
+      "text": "Vous examinez attentivement les alentours du gouffre.\n\nDes gravures anciennes sur les pierres racontent l'histoire d'une forteresse dédiée à un ordre de chevaliers.\n\nVous remarquez des traces de passage récent - quelqu'un d'autre est venu ici.\n\nLa corde semble solide et bien fixée.",
+      "next_scene": "entrance_choice"
+    },
+    {
+      "id": "search_path",
+      "type": "narrative",
+      "title": "🚶 RECHERCHE",
+      "text": "Vous faites le tour du gouffre, cherchant une autre entrée.\n\nAprès une heure de recherche, vous ne trouvez rien. Le seul moyen d'entrer est par la corde.",
+      "next_scene": "entrance_choice"
+    },
+    {
+      "id": "rope_descent",
+      "type": "narrative",
+      "title": "⬇️ DESCENTE",
+      "text": "Un par un, vous descendez la corde dans l'obscurité.\n\nL'air devient plus frais et humide. Des mousses phosphorescentes éclairent faiblement les murs.\n\nVous atteignez un sol de pierre. Devant vous, un couloir s'enfonce dans la citadelle.",
+      "next_scene": "first_hall"
+    },
+    {
+      "id": "first_hall",
+      "type": "choice",
+      "title": "🏛️ HALL D'ENTRÉE",
+      "description": "Un vaste hall s'étend devant vous. Deux portes : une au nord, une à l'est.",
+      "choices": [
+        {
+          "text": "Porte Nord",
+          "next_scene": "north_corridor",
+          "effects": {}
+        },
+        {
+          "text": "Porte Est",
+          "next_scene": "kobold_hall",
+          "effects": {}
+        },
+        {
+          "text": "Fouiller la salle",
+          "next_scene": "search_hall",
           "effects": {}
         }
       ]
     },
     {
-      "id": "rest_entrance",
-      "type": "rest",
-      "title": "💤 CAMPEMENT À L'ENTRÉE",
-      "rest_type": "short",
-      "next_scene": "entrance"
-    },
-    {
-      "id": "side_entrance",
+      "id": "search_hall",
       "type": "narrative",
-      "title": "🗿 ENTRÉE LATÉRALE",
-      "text": "Vous contournez les ruines et découvrez une fissure dans la pierre.\n\nEn vous faufilant à travers, vous évitez les pièges de l'entrée principale, mais vous entendez des voix gutturales... des gobelins!",
-      "next_scene": "goblin_guards"
+      "title": "🔍 FOUILLE",
+      "text": "Vous fouillez minutieusement le hall.\n\nVous trouvez quelques pièces de cuivre éparses (10 cp) et des gravures représentant des dragons.",
+      "next_scene": "first_hall"
     },
     {
-      "id": "main_hall",
-      "type": "choice",
-      "title": "🏛️ GRAND HALL",
-      "description": "Le grand hall est en ruine. Des colonnes brisées jonchent le sol.\n\nSur les murs, d'anciennes fresques dépeignent une citadelle glorieuse, maintenant tombée dans l'oubli.\n\nDeux passages s'ouvrent devant vous: l'un vers l'ouest, l'autre vers l'est.",
-      "choices": [
-        {
-          "text": "Explorer le passage ouest (quartiers gobelins)",
-          "next_scene": "goblin_guards",
-          "effects": {"locations_visited": 1}
-        },
-        {
-          "text": "Explorer le passage est (jardins souterrains)",
-          "next_scene": "underground_gardens",
-          "effects": {"locations_visited": 1}
-        },
-        {
-          "text": "Examiner les fresques plus attentivement",
-          "next_scene": "fresco_discovery",
-          "effects": {}
-        }
-      ]
-    },
-    {
-      "id": "fresco_discovery",
+      "id": "north_corridor",
       "type": "narrative",
-      "title": "📜 DÉCOUVERTE HISTORIQUE",
-      "text": "En examinant les fresques, vous découvrez des indices sur l'histoire de la citadelle. Elle appartenait à un ordre de druides qui vénérait un arbre sacré.\n\nMais l'arbre fut corrompu par un mal ancien... le Gulthias Tree.\n\nCette information pourrait être cruciale.",
-      "next_scene": "main_hall"
+      "title": "🚪 COULOIR NORD",
+      "text": "Le couloir est sombre et poussiéreux.\n\nVous entendez des bruits de grattement au loin...",
+      "next_scene": "rat_encounter"
     },
     {
-      "id": "goblin_guards",
+      "id": "rat_encounter",
       "type": "combat",
-      "title": "⚔️ GARDES GOBELINS",
-      "description": "Trois gobelins vous attaquent!",
+      "title": "🐀 RATS GÉANTS!",
+      "description": "Des rats géants vous attaquent!",
+      "monsters": ["giant_spider", "giant_spider"],
+      "on_victory": "after_rats",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "after_rats",
+      "type": "narrative",
+      "title": "✅ VICTOIRE",
+      "text": "Les rats géants sont vaincus!\n\nVous trouvez un passage vers le nord.",
+      "next_scene": "first_hall"
+    },
+    {
+      "id": "kobold_hall",
+      "type": "narrative",
+      "title": "🦎 HALL DES KOBOLDS",
+      "text": "Vous entrez dans une salle gardée par des kobolds!\n\nIls semblent surpris de vous voir.",
+      "next_scene": "kobold_combat"
+    },
+    {
+      "id": "kobold_combat",
+      "type": "combat",
+      "title": "⚔️ KOBOLDS!",
+      "description": "Les kobolds vous attaquent!",
       "monsters": ["goblin", "goblin", "goblin"],
-      "on_victory": "goblin_lair",
-      "on_defeat": "game_over"
-    },
-    {
-      "id": "goblin_lair",
-      "type": "choice",
-      "title": "🏚️ REPAIRE DES GOBELINS",
-      "description": "Vous pénétrez dans le repaire gobelin. Des paillasses sales, des tonneaux de provisions volées, et... une cage!\n\nÀ l'intérieur, un halfling prisonnier vous appelle faiblement.\n\"Aidez-moi... Je suis Erky Timbers, clerc d'Oakhurst... Ils m'ont capturé!\"\n\nUn gobelin chef plus imposant se tient près de la cage.",
-      "choices": [
-        {
-          "text": "Attaquer le chef gobelin pour libérer le prisonnier",
-          "next_scene": "boss_goblin_chief",
-          "effects": {}
-        },
-        {
-          "text": "Négocier avec le chef gobelin",
-          "next_scene": "negotiate_goblins",
-          "effects": {}
-        }
-      ]
-    },
-    {
-      "id": "boss_goblin_chief",
-      "type": "combat",
-      "title": "👹 CHEF GOBELIN",
-      "description": "Le chef gobelin hurle et charge!",
-      "monsters": ["goblin_chief"],
-      "on_victory": "rescue_erky",
-      "on_defeat": "game_over"
-    },
-    {
-      "id": "rescue_erky",
-      "type": "narrative",
-      "title": "🆘 SAUVETAGE",
-      "text": "Vous libérez Erky Timbers de sa cage!\n\n\"Merci, aventuriers! J'ai été capturé il y a des semaines. Je peux vous soigner!\"\n\nErky utilise ses derniers sorts pour vous restaurer.",
-      "next_scene": "rest_lair",
-      "effects": {"npcs_met": 1, "ally_erky": true}
-    },
-    {
-      "id": "rest_lair",
-      "type": "rest",
-      "title": "💤 REPOS DANS LE REPAIRE",
-      "rest_type": "long",
-      "next_scene": "underground_gardens"
-    },
-    {
-      "id": "underground_gardens",
-      "type": "narrative",
-      "title": "🌳 JARDINS SOUTERRAINS",
-      "text": "Vous descendez vers les jardins souterrains.\n\nUne lumière étrange émane d'une caverne massive. Des plantes phosphorescentes poussent partout, créant une atmosphère irréelle.\n\nAu centre, vous voyez un arbre immense et tordu... le Gulthias Tree.",
-      "next_scene": "approach_tree"
-    },
-    {
-      "id": "approach_tree",
-      "type": "choice",
-      "title": "🌿 L'ARBRE MAUDIT",
-      "description": "L'arbre pulse d'une énergie maléfique. Que faites-vous?",
-      "choices": [
-        {
-          "text": "Attaquer l'arbre pour le détruire",
-          "next_scene": "tree_awakens",
-          "effects": {}
-        },
-        {
-          "text": "Examiner l'arbre prudemment",
-          "next_scene": "examine_tree",
-          "effects": {}
-        }
-      ]
-    },
-    {
-      "id": "tree_awakens",
-      "type": "combat",
-      "title": "🌳 L'ARBRE S'ÉVEILLE!",
-      "description": "L'arbre s'anime, ses branches devenant des tentacules meurtriers!",
-      "monsters": ["tree_blight"],
       "on_victory": "victory",
       "on_defeat": "game_over"
     },
@@ -175,13 +130,20 @@
       "id": "victory",
       "type": "narrative",
       "title": "🎉 VICTOIRE!",
-      "text": "L'arbre maudit s'effondre dans un hurlement végétal!\n\nSes racines se flétrissent, libérant la citadelle de son emprise.\n\nVous avez triomphé de la Citadelle Sans Soleil!\n\nErky vous remercie chaleureusement. Les villageois d'Oakhurst vous accueilleront en héros. Vous avez gagné leur gratitude éternelle!",
+      "text": "Vous avez vaincu les kobolds!\n\nVous trouvez un passage secret menant plus profondément dans la citadelle...\n\n(Fin de la première partie - à suivre!)",
       "next_scene": null,
       "rewards": {
-        "gold": 200,
-        "xp": 700,
-        "reputation": 10
+        "gold": 50,
+        "xp": 300,
+        "reputation": 3
       }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 GAME OVER",
+      "text": "Votre aventure se termine ici...\n\nLa Citadelle Sans Soleil garde ses secrets.",
+      "next_scene": null
     }
   ]
 }

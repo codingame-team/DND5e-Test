@@ -1,0 +1,247 @@
+{
+  "goblin": {
+    "name": "Goblin",
+    "size": "Small",
+    "type": "humanoid",
+    "alignment": "neutral evil",
+    "armor_class": 15,
+    "hit_points": 7,
+    "hit_dice": "2d6",
+    "abilities": {
+      "str": 8,
+      "dex": 14,
+      "con": 10,
+      "int": 10,
+      "wis": 8,
+      "cha": 8
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 0.25,
+    "xp": 50,
+    "actions": [
+      {
+        "name": "Scimitar",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "slashing"
+      },
+      {
+        "name": "Shortbow",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "piercing",
+        "range": "80/320 ft"
+      }
+    ]
+  },
+  "goblin_boss": {
+    "name": "Goblin Boss",
+    "size": "Small",
+    "type": "humanoid",
+    "alignment": "neutral evil",
+    "armor_class": 17,
+    "hit_points": 21,
+    "hit_dice": "6d6",
+    "abilities": {
+      "str": 10,
+      "dex": 14,
+      "con": 10,
+      "int": 10,
+      "wis": 8,
+      "cha": 10
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 1,
+    "xp": 200,
+    "actions": [
+      {
+        "name": "Scimitar",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "slashing"
+      },
+      {
+        "name": "Javelin",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "piercing",
+        "range": "30/120 ft"
+      }
+    ],
+    "special_abilities": [
+      {
+        "name": "Redirect Attack",
+        "desc": "When a creature the goblin boss can see targets it with an attack, the goblin boss chooses another goblin within 5 feet of it. The two goblins swap places, and the chosen goblin becomes the target instead."
+      }
+    ]
+  },
+  "snake_guardian": {
+    "name": "Snake Guardian",
+    "size": "Medium",
+    "type": "undead",
+    "alignment": "lawful evil",
+    "armor_class": 13,
+    "hit_points": 22,
+    "hit_dice": "4d8+4",
+    "abilities": {
+      "str": 15,
+      "dex": 12,
+      "con": 12,
+      "int": 6,
+      "wis": 8,
+      "cha": 5
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 1,
+    "xp": 200,
+    "damage_immunities": ["poison"],
+    "condition_immunities": ["exhaustion", "poisoned"],
+    "actions": [
+      {
+        "name": "Scimitar",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "slashing"
+      },
+      {
+        "name": "Venomous Bite",
+        "attack_bonus": 4,
+        "damage_dice": "1d4",
+        "damage_bonus": 2,
+        "damage_type": "piercing",
+        "additional_effect": "Target must succeed on a DC 11 Constitution saving throw or take 2d6 poison damage"
+      }
+    ]
+  },
+  "snake_king": {
+    "name": "Snake King",
+    "size": "Medium",
+    "type": "undead",
+    "alignment": "lawful evil",
+    "armor_class": 15,
+    "hit_points": 45,
+    "hit_dice": "7d8+14",
+    "abilities": {
+      "str": 16,
+      "dex": 14,
+      "con": 14,
+      "int": 10,
+      "wis": 11,
+      "cha": 12
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 3,
+    "xp": 700,
+    "damage_immunities": ["poison"],
+    "condition_immunities": ["exhaustion", "poisoned"],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "desc": "The snake king makes two scimitar attacks or one scimitar attack and one bite attack"
+      },
+      {
+        "name": "Scimitar",
+        "attack_bonus": 5,
+        "damage_dice": "1d6",
+        "damage_bonus": 3,
+        "damage_type": "slashing"
+      },
+      {
+        "name": "Cobra Staff",
+        "attack_bonus": 5,
+        "damage_dice": "1d8",
+        "damage_bonus": 3,
+        "damage_type": "bludgeoning",
+        "additional_effect": "Plus 2d6 poison damage"
+      }
+    ],
+    "special_abilities": [
+      {
+        "name": "Serpent Command",
+        "desc": "As a bonus action, the snake king can command all snake guardians within 30 feet to attack"
+      }
+    ]
+  },
+  "giant_spider": {
+    "name": "Giant Spider",
+    "size": "Large",
+    "type": "beast",
+    "alignment": "unaligned",
+    "armor_class": 14,
+    "hit_points": 26,
+    "hit_dice": "4d10+4",
+    "abilities": {
+      "str": 14,
+      "dex": 16,
+      "con": 12,
+      "int": 2,
+      "wis": 11,
+      "cha": 4
+    },
+    "speed": {"walk": "30 ft", "climb": "30 ft"},
+    "challenge_rating": 1,
+    "xp": 200,
+    "actions": [
+      {
+        "name": "Bite",
+        "attack_bonus": 5,
+        "damage_dice": "1d8",
+        "damage_bonus": 3,
+        "damage_type": "piercing",
+        "additional_effect": "Target must make a DC 11 Constitution saving throw, taking 2d8 poison damage on a failed save, or half as much on a successful one"
+      },
+      {
+        "name": "Web",
+        "attack_bonus": 5,
+        "range": "30/60 ft",
+        "desc": "The target is restrained by webbing. A creature can use its action to make a DC 12 Strength check, freeing itself or another creature within its reach on a success"
+      }
+    ]
+  },
+  "skeleton": {
+    "name": "Skeleton",
+    "size": "Medium",
+    "type": "undead",
+    "alignment": "lawful evil",
+    "armor_class": 13,
+    "hit_points": 13,
+    "hit_dice": "2d8+4",
+    "abilities": {
+      "str": 10,
+      "dex": 14,
+      "con": 15,
+      "int": 6,
+      "wis": 8,
+      "cha": 5
+    },
+    "speed": {"walk": "30 ft"},
+    "challenge_rating": 0.25,
+    "xp": 50,
+    "damage_vulnerabilities": ["bludgeoning"],
+    "damage_immunities": ["poison"],
+    "condition_immunities": ["exhaustion", "poisoned"],
+    "actions": [
+      {
+        "name": "Shortsword",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "piercing"
+      },
+      {
+        "name": "Shortbow",
+        "attack_bonus": 4,
+        "damage_dice": "1d6",
+        "damage_bonus": 2,
+        "damage_type": "piercing",
+        "range": "80/320 ft"
+      }
+    ]
+  }
+}
+

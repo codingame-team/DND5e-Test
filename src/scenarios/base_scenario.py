@@ -51,31 +51,119 @@ class BaseScenario(ABC):
         self.level_manager = LevelUpManager()
         self.village_rest = VillageRestManager()
 
-        # 🆕 Monster loader depuis dnd_5e_core package
+        # 🆕 Monster loader depuis fichiers JSON locaux + dnd_5e_core package
         from dnd_5e_core.data import load_monster
         from dnd_5e_core import Monster, Abilities
         from dnd_5e_core.combat import Action, ActionType, Damage
         from dnd_5e_core.mechanics import DamageDice
         from dnd_5e_core.equipment import DamageType
+        import json
+        from pathlib import Path
 
         # Créer un wrapper pour compatibilité avec l'ancienne interface
         class MonsterFactoryWrapper:
-            def create_monster(self, monster_id: str, name: Optional[str] = None):
-                """Créer un monstre en utilisant dnd_5e_core.data.load_monster"""
-                # Normaliser l'ID (snake_case -> kebab-case pour l'API)
-                # goblin_boss -> goblin-boss
-                normalized_id = monster_id.replace('_', '-')
+            def __init__(self):
+                # Charger les monstres locaux depuis JSON
+                local_monsters_path = Path(__file__).parent.parent.parent / "data" / "monsters" / "all_monsters.json"
+                self.local_monsters = {}
+                if local_monsters_path.exists():
+                    try:
+                        with open(local_monsters_path, 'r', encoding='utf-8') as f:
+                            self.local_monsters = json.load(f)
+                    except Exception as e:
+                        print(f"⚠️ Erreur chargement monstres locaux: {e}")
 
-                # Essayer de charger depuis dnd_5e_core (retourne un dict)
+            def create_monster(self, monster_id: str, name: Optional[str] = None):
+                """Créer un monstre en utilisant les données locales ou dnd_5e_core.data.load_monster"""
+                # 1. Essayer d'abord les monstres locaux
+                if monster_id in self.local_monsters:
+                    return self._create_from_local(monster_id, name)
+
+                # 2. Sinon, essayer l'API dnd_5e_core
+                normalized_id = monster_id.replace('_', '-')
                 monster_data = load_monster(normalized_id)
                 if not monster_data:
-                    # Essayer avec l'ID direct
                     monster_data = load_monster(monster_id)
-                if not monster_data:
-                    print(f"⚠️ Monstre non trouvé: {monster_id} (normalisé: {normalized_id})")
+
+                if monster_data:
+                    return self._create_from_api(monster_data, monster_id, name)
+
+                print(f"⚠️ Monstre non trouvé: {monster_id}")
+                return None
+
+            def _create_from_local(self, monster_id: str, name: Optional[str] = None):
+                """Créer un monstre depuis les données locales JSON"""
+                data = self.local_monsters[monster_id]
+
+                try:
+                    abilities = Abilities(
+                        str=data['abilities']['str'],
+                        dex=data['abilities']['dex'],
+                        con=data['abilities']['con'],
+                        int=data['abilities']['int'],
+                        wis=data['abilities']['wis'],
+                        cha=data['abilities']['cha']
+                    )
+
+                    # Convertir les actions
+                    actions = []
+                    for action_data in data.get('actions', []):
+                        # Ignorer les actions sans attaque (comme Multiattack)
+                        if 'attack_bonus' not in action_data:
+                            continue
+
+                        damage_type_name = action_data.get('damage_type', 'slashing')
+                        damage_type = DamageType(
+                            index=damage_type_name.lower(),
+                            name=damage_type_name.capitalize(),
+                            desc=f"{damage_type_name} damage"
+                        )
+
+                        action = Action(
+                            name=action_data['name'],
+                            desc=action_data.get('desc', ''),
+                            type=ActionType.MELEE if not action_data.get('range') else ActionType.RANGED,
+                            attack_bonus=action_data['attack_bonus'],
+                            damages=[Damage(
+                                type=damage_type,
+                                dd=DamageDice(action_data.get('damage_dice', '1d6'))
+                            )],
+                            normal_range=5 if not action_data.get('range') else int(action_data['range'].split('/')[0])
+                        )
+                        actions.append(action)
+
+                    # Extraire la vitesse
+                    speed_data = data.get('speed', {})
+                    if isinstance(speed_data, dict):
+                        walk_speed = speed_data.get('walk', '30 ft')
+                    else:
+                        walk_speed = '30 ft'
+                    speed = int(walk_speed.replace(' ft', '').replace('ft', '').strip())
+
+                    monster = Monster(
+                        index=monster_id,
+                        name=name if name else data['name'],
+                        abilities=abilities,
+                        proficiencies=[],
+                        armor_class=data['armor_class'],
+                        hit_points=data['hit_points'],
+                        hit_dice=data['hit_dice'],
+                        xp=data['xp'],
+                        speed=speed,
+                        challenge_rating=data['challenge_rating'],
+                        actions=actions
+                    )
+
+                    return monster
+
+                except Exception as e:
+                    print(f"⚠️ Erreur lors de la création du monstre local {monster_id}: {e}")
+                    import traceback
+                    traceback.print_exc()
                     return None
 
-                # Convertir le dict en objet Monster
+            def _create_from_api(self, monster_data: dict, monster_id: str, name: Optional[str] = None):
+                """Créer un monstre depuis les données de l'API dnd_5e_core"""
                 try:
                     abilities = Abilities(
                         str=monster_data.get('strength', 10),
@@ -129,7 +217,7 @@ class BaseScenario(ABC):
                     return monster
 
                 except Exception as e:
-                    print(f"⚠️ Erreur lors de la création du monstre {monster_id}: {e}")
+                    print(f"⚠️ Erreur lors de la création du monstre API {monster_id}: {e}")
                     import traceback
                     traceback.print_exc()
                     return None
@@ -677,8 +765,22 @@ class BaseScenario(ABC):
 
             # Créer quelques potions de base
             potions = [
-                HealingPotion("Potion of Healing", PotionRarity.COMMON),
-                HealingPotion("Potion of Greater Healing", PotionRarity.UNCOMMON),
+                HealingPotion(
+                    name="Potion of Healing",
+                    rarity=PotionRarity.COMMON,
+                    hit_dice="2d4",
+                    bonus=2,
+                    min_cost=50,
+                    max_cost=50
+                ),
+                HealingPotion(
+                    name="Potion of Greater Healing",
+                    rarity=PotionRarity.UNCOMMON,
+                    hit_dice="4d4",
+                    bonus=4,
+                    min_cost=150,
+                    max_cost=150
+                ),
             ]
 
             if weapons or armors or equipments:
