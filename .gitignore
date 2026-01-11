@@ -25,7 +25,7 @@ Thumbs.db
 # Project specific
 *.backup
 reorganize_project.sh
-archive/
+/archive/
 
 # Savegames (optional - uncomment to ignore)
 # savegames/
