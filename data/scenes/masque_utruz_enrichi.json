@@ -1,0 +1,339 @@
+{
+  "scenario_id": "masque_utruz_enrichi",
+  "name": "Le Masque Utruz (Version Enrichie)",
+  "level": 3,
+  "difficulty": "medium",
+  "duration_hours": "3-4",
+  "recommended_party_size": 4,
+  "description": "Basé sur le scénario officiel. Enquête urbaine dans une cité sur une faille, impliquant un usurier, des prisonniers libérés, et le mystérieux trésor des Utruz.",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "🏙️ LA CITÉ SUR LA FAILLE",
+      "text": "Vous êtes des aventuriers dans l'immense cité grouillante de mercenaires en quête d'exploits.\n\nL'inaction commence à peser, et il faut bien vivre. Après bien des recherches, vous entrez au service d'un usurier: Maître Grassepath, propriétaire du Boulier Bleu.\n\nSa maison se distingue du fait qu'elle est située à l'extrême limite de la faille, tout au bord du vide. Sur sa face arrière s'accroche un échafaudage de balcons et d'escaliers suspendus au-dessus du gouffre.\n\nVotre première mission: retrouver un halfelin rouquin emprisonné et le ramener vivant.",
+      "next_scene": "morning_mission"
+    },
+    {
+      "id": "morning_mission",
+      "type": "narrative",
+      "title": "🌅 AU PIED DE LA HAUTE TERRASSE",
+      "text": "Le lendemain matin, vous vous retrouvez au pied de la Haute Terrasse.\n\nLes gardes examinent minutieusement votre laissez-passer et décident, pour plus de précaution, de vous inoculer un poison à effet lent. Ce désagrément administratif achevé, vous n'avez que le temps de vous précipiter vers la prison.\n\nVous voyez sortir un petit groupe d'anciens détenus. Parmi eux: un halfelin rouquin au visage constellé de taches de rousseur!\n\nAlors que les autres prisonniers ont une démarche étrangement cassée (certaines cellules mesurent seulement 1,50 mètre de haut), le petit homme semble plutôt bien portant.",
+      "next_scene": "halfelin_contact"
+    },
+    {
+      "id": "halfelin_contact",
+      "type": "choice",
+      "title": "🧔 LE HALFELIN ROUQUIN",
+      "description": "Comment aborder le halfelin?",
+      "choices": [
+        {
+          "text": "L'approcher directement",
+          "next_scene": "direct_approach",
+          "effects": {}
+        },
+        {
+          "text": "Le suivre discrètement",
+          "next_scene": "follow_halfelin",
+          "effects": {}
+        },
+        {
+          "text": "Retourner informer Grassepath",
+          "next_scene": "report_grassepath",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "direct_approach",
+      "type": "narrative",
+      "title": "💬 APPROCHE DIRECTE",
+      "text": "Vous vous approchez du halfelin et expliquez que Grassepath vous envoie.\n\nLe halfelin vous dévisage: \"Grassepath? Ce vieux rapace m'a fait emprisonner! Qu'est-ce qu'il me veut encore?\"\n\nIl semble méfiant mais prêt à écouter...",
+      "next_scene": "halfelin_story"
+    },
+    {
+      "id": "follow_halfelin",
+      "type": "narrative",
+      "title": "🕵️ FILATURE",
+      "text": "Vous suivez discrètement le halfelin à travers les ruelles.\n\nIl se dirige vers le quartier du Salammatin, près de la Bibliothèque Matérialiste Universelle.\n\nVous le voyez entrer dans un bâtiment anonyme au second étage...",
+      "next_scene": "salammatin_discovery"
+    },
+    {
+      "id": "report_grassepath",
+      "type": "narrative",
+      "title": "🏠 RETOUR AU BOULIER BLEU",
+      "text": "Vous retournez au Boulier Bleu pour informer Grassepath.\n\nMais en arrivant, vous entendez des imprécations! La maison est attaquée!",
+      "next_scene": "boulier_attack"
+    },
+    {
+      "id": "halfelin_story",
+      "type": "narrative",
+      "title": "📖 L'HISTOIRE DU HALFELIN",
+      "text": "Le halfelin se nomme Finch. Il vous raconte son histoire:\n\n\"Grassepath m'a accusé à tort de vol! J'étais journaliste au Salammatin, une feuille de nouvelles hebdomadaire. J'enquêtais sur les Utruz - un peuple mystérieux vivant sous la cité.\"\n\n\"Ils possèdent un trésor légendaire! Mais Grassepath voulait le garder pour lui. Alors il m'a fait emprisonner!\"\n\n\"Si vous m'aidez à récupérer des preuves au Salammatin, je partagerai ce que je sais sur le trésor!\"",
+      "next_scene": "help_finch_choice"
+    },
+    {
+      "id": "help_finch_choice",
+      "type": "choice",
+      "title": "🤝 AIDER FINCH?",
+      "description": "Que faites-vous?",
+      "choices": [
+        {
+          "text": "Aider Finch",
+          "next_scene": "salammatin_visit",
+          "effects": {"npcs_met": 1}
+        },
+        {
+          "text": "Le ramener à Grassepath",
+          "next_scene": "betray_finch",
+          "effects": {}
+        },
+        {
+          "text": "Négocier avec les deux",
+          "next_scene": "negotiate_both",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "salammatin_visit",
+      "type": "narrative",
+      "title": "📰 LE SALAMMATIN",
+      "text": "Vous accompagnez Finch au siège du Salammatin, situé non loin du Boulier Bleu, face à la Bibliothèque Matérialiste Universelle.\n\nAu second étage d'une baraque anonyme, quatre scribes sont plongés dans la rédaction du Salammatin - une feuille de parchemin hebdomadaire destinée à l'affichage public.\n\nLes bureaux sont en perpétuelle effervescence. Finch retrouve ses notes sur les Utruz cachées dans un tiroir!\n\n\"Parfait! Maintenant, il faut confronter Grassepath!\"",
+      "next_scene": "return_to_boulier"
+    },
+    {
+      "id": "salammatin_discovery",
+      "type": "narrative",
+      "title": "📰 DÉCOUVERTE",
+      "text": "Vous observez le halfelin entrer dans le bâtiment.\n\nEn vous renseignant, vous apprenez que c'est le siège du Salammatin - une publication locale.\n\nQue fait un ex-prisonnier ici?",
+      "next_scene": "investigate_salammatin"
+    },
+    {
+      "id": "investigate_salammatin",
+      "type": "choice",
+      "title": "🔍 ENQUÊTE",
+      "description": "Comment procéder?",
+      "choices": [
+        {
+          "text": "Entrer et interroger",
+          "next_scene": "salammatin_visit",
+          "effects": {}
+        },
+        {
+          "text": "Retourner voir Grassepath",
+          "next_scene": "report_grassepath",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "return_to_boulier",
+      "type": "narrative",
+      "title": "🏠 RETOUR AU BOULIER BLEU",
+      "text": "Vous retournez au Boulier Bleu avec Finch.\n\nMais en arrivant, catastrophe! La maison est attaquée par une douzaine de mendiants!\n\nGrassepath et sa servante sont réfugiés au premier étage, attendant désespérément des secours!\n\nLes assaillants combattent sur les balcons suspendus au-dessus du vide!",
+      "next_scene": "boulier_attack"
+    },
+    {
+      "id": "betray_finch",
+      "type": "narrative",
+      "title": "🤝 TRAHISON",
+      "text": "Vous décidez de ramener Finch à Grassepath.\n\nFinch proteste: \"Vous ne comprenez pas! Grassepath est dangereux!\"\n\nEn arrivant au Boulier Bleu, vous trouvez la maison attaquée!",
+      "next_scene": "boulier_attack"
+    },
+    {
+      "id": "negotiate_both",
+      "type": "narrative",
+      "title": "⚖️ NÉGOCIATION",
+      "text": "Vous proposez d'organiser une rencontre entre Finch et Grassepath.\n\nMais en retournant au Boulier Bleu, vous découvrez l'attaque en cours!",
+      "next_scene": "boulier_attack"
+    },
+    {
+      "id": "boulier_attack",
+      "type": "narrative",
+      "title": "⚔️ ATTAQUE DU BOULIER BLEU!",
+      "text": "La maison de Grassepath est attaquée par une douzaine de mendiants!\n\nL'usurier et sa servante sont réfugiés au premier étage. Les assaillants (6 bandits et 6 acolytes) combattent sur les balcons et escaliers suspendus au-dessus de la faille!\n\nUne bagarre au-dessus du vide! Les mendiants cherchent à piller la maison!\n\nVous devez intervenir!",
+      "next_scene": "void_combat"
+    },
+    {
+      "id": "void_combat",
+      "type": "combat",
+      "title": "⚔️ COMBAT AU-DESSUS DU VIDE",
+      "description": "Vous combattez les bandits et acolytes sur les balcons suspendus! Attention à ne pas tomber dans la faille!",
+      "monsters": ["cultist", "cultist", "cultist", "cultist", "cultist", "cultist"],
+      "on_victory": "after_attack",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "after_attack",
+      "type": "narrative",
+      "title": "✅ ATTAQUE REPOUSSÉE",
+      "text": "Les mendiants sont vaincus! Certains ont fui, d'autres sont tombés dans la faille...\n\nGrassepath descend, soulagé: \"Vous m'avez sauvé! Ces misérables voulaient me voler!\"\n\nSur les bandits, vous trouvez 18 po chacun (108 po total) et sur les acolytes 11 po chacun (66 po total).\n\nGrassepath vous récompense: \"Vous avez mérité une prime! Et maintenant, parlons du halfelin...\"",
+      "next_scene": "grassepath_revelation"
+    },
+    {
+      "id": "grassepath_revelation",
+      "type": "narrative",
+      "title": "🗣️ RÉVÉLATIONS",
+      "text": "Grassepath admet finalement la vérité:\n\n\"Bon, d'accord. Le halfelin enquêtait sur les Utruz. Ces créatures vivent dans les profondeurs sous la cité, dans des cavernes reliées au lac souterrain.\"\n\n\"Ils possèdent un trésor sacré - mais ce n'est pas de l'or! C'est une pieuvre géante qu'ils vénèrent comme un dieu!\"\n\n\"J'ai voulu récupérer ce 'trésor' mais le halfelin m'en a empêché. Alors je l'ai fait emprisonner.\"\n\n\"Maintenant que vous connaissez la vérité, je vous propose un marché: explorez les cavernes des Utruz et ramenez-moi cette pieuvre! Je paierai 500 po!\"",
+      "next_scene": "final_choice"
+    },
+    {
+      "id": "final_choice",
+      "type": "choice",
+      "title": "⚖️ DÉCISION FINALE",
+      "description": "Que décidez-vous?",
+      "choices": [
+        {
+          "text": "Accepter la mission de Grassepath",
+          "next_scene": "utruz_mission",
+          "effects": {}
+        },
+        {
+          "text": "Refuser et aider Finch",
+          "next_scene": "help_finch_end",
+          "effects": {}
+        },
+        {
+          "text": "Explorer par vous-mêmes",
+          "next_scene": "independent_exploration",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "utruz_mission",
+      "type": "narrative",
+      "title": "🕳️ DESCENTE VERS LES UTRUZ",
+      "text": "Vous acceptez la mission de Grassepath.\n\nIl vous indique l'entrée des cavernes: un passage secret sous la Bibliothèque Matérialiste Universelle.\n\nVous descendez dans l'obscurité, suivant les tunnels qui mènent vers le lac souterrain...\n\nBientôt, vous entendez une mélopée étrange résonner dans les profondeurs...",
+      "next_scene": "utruz_cavern"
+    },
+    {
+      "id": "independent_exploration",
+      "type": "narrative",
+      "title": "🗺️ EXPLORATION INDÉPENDANTE",
+      "text": "Vous décidez d'explorer les cavernes par vous-mêmes, sans servir Grassepath.\n\nFinch vous donne des indications sur l'entrée secrète.\n\nVous descendez dans les profondeurs...",
+      "next_scene": "utruz_cavern"
+    },
+    {
+      "id": "utruz_cavern",
+      "type": "narrative",
+      "title": "🐙 LA CAVERNE DES UTRUZ",
+      "text": "Vous arrivez au centre d'une immense salle.\n\nAu centre: une stèle dressée sur laquelle est avachie une pieuvre de proportions exceptionnelles (environ 5 mètres de diamètre)!\n\nElle est entourée d'une centaine d'Utruz prosternés, qui psalmodient une mélopée. Ces créatures humanoïdes aux traits de poisson vous observent sans hostilité.\n\nUne grande flaque communique avec le lac souterrain. Mais aucune trace d'un quelconque trésor en or ou bijoux.\n\nLe trésor des Utruz EST cette pieuvre géante - réincarnation de leur Dieu-Poisson!",
+      "next_scene": "utruz_choice"
+    },
+    {
+      "id": "utruz_choice",
+      "type": "choice",
+      "title": "🐙 LE DIEU-POISSON",
+      "description": "Que faites-vous face au Dieu-Poisson des Utruz?",
+      "choices": [
+        {
+          "text": "Respecter leur culte et repartir",
+          "next_scene": "respect_utruz",
+          "effects": {}
+        },
+        {
+          "text": "Tenter de capturer la pieuvre",
+          "next_scene": "capture_attempt",
+          "effects": {}
+        },
+        {
+          "text": "Négocier avec les Utruz",
+          "next_scene": "negotiate_utruz",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "respect_utruz",
+      "type": "narrative",
+      "title": "🙏 RESPECT",
+      "text": "Vous comprenez que le trésor des Utruz n'est pas matériel.\n\nVous vous inclinez respectueusement devant le Dieu-Poisson et repartez.\n\nLes Utruz vous remercient de votre respect. Leur chef vous offre un Masque Utruz sacré en signe de gratitude!\n\nCe masque de jade permet de respirer sous l'eau (objet magique rare).",
+      "next_scene": "peaceful_victory"
+    },
+    {
+      "id": "capture_attempt",
+      "type": "narrative",
+      "title": "⚠️ TENTATIVE DE CAPTURE",
+      "text": "Vous tentez de capturer la pieuvre!\n\nLes Utruz hurlent de rage! \"PROFANATION! Défendez le Dieu-Poisson!\"\n\nCentaine d'Utruz vous attaquent! La pieuvre géante se réveille également!",
+      "next_scene": "utruz_battle"
+    },
+    {
+      "id": "negotiate_utruz",
+      "type": "narrative",
+      "title": "💬 NÉGOCIATION",
+      "text": "Vous tentez de négocier avec le chef des Utruz.\n\nIl explique: \"Le Dieu-Poisson est sacré. Mais nous comprenons que vous cherchiez un trésor.\"\n\n\"Si vous nous aidez à repousser les pilleurs de surface qui menacent nos cavernes, nous vous offrirons un présent de grande valeur.\"\n\nVous acceptez.",
+      "next_scene": "defend_utruz"
+    },
+    {
+      "id": "utruz_battle",
+      "type": "combat",
+      "title": "⚔️ COLÈRE DES UTRUZ",
+      "description": "Vous avez profané leur temple! Les Utruz et leur Dieu-Poisson vous attaquent!",
+      "monsters": ["death_priest", "cultist", "cultist", "cultist", "shadow", "shadow"],
+      "on_victory": "bad_ending",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "defend_utruz",
+      "type": "combat",
+      "title": "⚔️ DÉFENSE DES CAVERNES",
+      "description": "Des pilleurs de Grassepath attaquent! Défendez les Utruz!",
+      "monsters": ["cultist", "cultist", "cultist", "cultist"],
+      "on_victory": "utruz_gift",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "utruz_gift",
+      "type": "narrative",
+      "title": "🎁 CADEAU DES UTRUZ",
+      "text": "Les Utruz sont reconnaissants!\n\nLeur chef vous offre:\n- Le Masque Utruz sacré (respiration aquatique)\n- Des perles du lac souterrain (300 po de valeur)\n- La bénédiction du Dieu-Poisson (+1 en Sagesse permanent)\n\nVous êtes maintenant amis des Utruz!",
+      "next_scene": "peaceful_victory"
+    },
+    {
+      "id": "bad_ending",
+      "type": "narrative",
+      "title": "💀 FIN SOMBRE",
+      "text": "Vous avez vaincu les Utruz et capturé la pieuvre...\n\nMais à quel prix? Vous avez détruit un peuple paisible et profané leur temple.\n\nGrassepath vous paie 500 po, mais la culpabilité vous ronge.\n\nLes Utruz sont éteints. Leur culture est perdue à jamais.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 500,
+        "xp": 400,
+        "items": []
+      }
+    },
+    {
+      "id": "help_finch_end",
+      "type": "narrative",
+      "title": "📰 JUSTICE",
+      "text": "Vous refusez d'aider Grassepath et soutenez Finch.\n\nFinch publie un article exposant les crimes de Grassepath dans le Salammatin!\n\nL'usurier est arrêté par les gardes. Finch vous récompense: 300 po et son amitié éternelle.\n\nLes Utruz restent en paix dans leurs cavernes.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 300,
+        "xp": 600,
+        "items": ["Amitié de Finch", "Réputation de Justiciers"]
+      }
+    },
+    {
+      "id": "peaceful_victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE PACIFIQUE!",
+      "text": "Vous avez résolu la situation sans violence inutile!\n\nLes Utruz vous considèrent comme des amis. Finch est libre et reprend son travail au Salammatin.\n\nGrassepath est exposé et arrêté pour ses crimes.\n\nVous repartez avec:\n- Le Masque Utruz sacré (objet magique rare)\n- Des perles précieuses (300 po)\n- La bénédiction du Dieu-Poisson\n- La reconnaissance des Utruz\n\nUne fin heureuse pour tous... sauf Grassepath!",
+      "next_scene": null,
+      "rewards": {
+        "gold": 300,
+        "xp": 900,
+        "items": ["Masque Utruz", "Perles du Lac", "Bénédiction du Dieu-Poisson (+1 Sagesse)"]
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus dans les profondeurs...\n\nLes Utruz restent maîtres de leurs cavernes.",
+      "next_scene": null
+    }
+  ]
+}
+

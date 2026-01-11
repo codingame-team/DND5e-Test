@@ -1,17 +1,16 @@
 {
-  "scenario": "L'Oeil de Gruumsh",
-  "scene_id": "temple_approach",
+  "scenario": "Le Masque Utruz",
+  "scene_id": "destroy_mask",
   "game_state": {
     "combat_victories": 0,
-    "total_xp": 400,
+    "total_xp": 550,
     "gold": 0,
-    "gold_spent": 120,
+    "gold_spent": 110,
     "locations_visited": 0,
-    "npcs_met": 1,
+    "npcs_met": 0,
     "quests_completed": 0,
-    "deaths": 0,
-    "reputation": 1
+    "deaths": 0
   },
-  "timestamp": "2026-01-11T00:19:12.699891",
+  "timestamp": "2026-01-11T01:03:49.702598",
   "version": "3.1.0"
 }
