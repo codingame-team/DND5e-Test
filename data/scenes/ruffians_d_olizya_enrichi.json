@@ -1,0 +1,69 @@
+{
+  "scenario_id": "ruffians_d_olizya",
+  "name": "Ruffians D Olizya",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "description": "Scénario enrichi automatiquement depuis le PDF. 3 sections, 0 lieux.",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "📖 RUFFIANS D OLIZYA",
+      "text": "\n",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "main_choice",
+      "type": "choice",
+      "title": "🗺️ CHOIX",
+      "description": "Que faites-vous?",
+      "choices": [
+        {
+          "text": "Commencer l'aventure",
+          "next_scene": "adventure_start",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "adventure_start",
+      "type": "narrative",
+      "title": "⚔️ L'AVENTURE COMMENCE",
+      "text": "Votre aventure commence...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "encounter_1",
+      "type": "combat",
+      "title": "⚔️ COMBAT",
+      "description": "Des ennemis vous attaquent!",
+      "monsters": [
+        "goblin",
+        "goblin"
+      ],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Vous avez accompli votre mission dans Ruffians d Olizya!\n\nVous êtes récompensés pour vos exploits.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 500,
+        "items": []
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus...",
+      "next_scene": null
+    }
+  ]
+}

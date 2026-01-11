@@ -1,0 +1,102 @@
+{
+  "scenario_id": "cryptes_de_kelemvor",
+  "name": "Cryptes De Kelemvor",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "description": "Scénario enrichi automatiquement depuis le PDF. 7 sections, 5 lieux.",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "📖 CRYPTES DE KELEMVOR",
+      "text": "u cœur des marais du Feu-follet d’argent, entre la  Grande route et Phandaline, se trouve un grand  cimetière connu sous le nom des Contrebas  d’ébène. De nombreuses générations de gens du  cru y ont été enterrés, que ce soit dans des  tertres, des cryptes ou des tombes. Les villageois  de Creux-lugubre ont veillé sur ces terres  pendant des années, chaque génération transmettant le  flambeau à se...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "main_choice",
+      "type": "choice",
+      "title": "🗺️ CHOIX",
+      "description": "Que faites-vous?",
+      "choices": [
+        {
+          "text": "Explorer Grande",
+          "next_scene": "location_1",
+          "effects": {}
+        },
+        {
+          "text": "Explorer Cette",
+          "next_scene": "location_2",
+          "effects": {}
+        },
+        {
+          "text": "Explorer Les",
+          "next_scene": "location_3",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "location_1",
+      "type": "narrative",
+      "title": "🏛️ GRANDE",
+      "text": "Vous arrivez à Grande.\n\nVous explorez les lieux...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "location_2",
+      "type": "narrative",
+      "title": "🏛️ CETTE",
+      "text": "Vous arrivez à Cette.\n\nVous explorez les lieux...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "location_3",
+      "type": "narrative",
+      "title": "🏛️ LES",
+      "text": "Vous arrivez à Les.\n\nVous explorez les lieux...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "adventure_start",
+      "type": "narrative",
+      "title": "⚔️ L'AVENTURE COMMENCE",
+      "text": "Votre aventure commence...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "encounter_1",
+      "type": "combat",
+      "title": "⚔️ RENCONTRE: SQUELETTE",
+      "description": "Vous affrontez 8 Squelette!",
+      "monsters": [
+        "goblin",
+        "goblin",
+        "goblin",
+        "goblin"
+      ],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Vous avez accompli votre mission dans Cryptes de Kelemvor!\n\nVous êtes récompensés pour vos exploits.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 500,
+        "items": []
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus...",
+      "next_scene": null
+    }
+  ]
+}

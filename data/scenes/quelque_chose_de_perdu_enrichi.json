@@ -1,0 +1,100 @@
+{
+  "scenario_id": "quelque_chose_de_perdu",
+  "name": "Quelque Chose De Perdu",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "description": "Scénario enrichi automatiquement depuis le PDF. 8 sections, 8 lieux.",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "📖 QUELQUE CHOSE DE PERDU",
+      "text": "Cet été ressemble à un long rêve ininterrompu. Ensemble, vous\navez joué dans les meules de foin, couru pieds nus dans des\nprairies couvertes de rosée, sauté depuis une corde dans une\nrivière, pêché avec des jarres et entrepris de dangereuses\nescapades. Mais surtout, vous êtes depuis quelques jours unis\npar un secret passionnant : Juniper, la petite ourse-hibou\norpheline.\nVous l'avez trouvée un mat...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "main_choice",
+      "type": "choice",
+      "title": "🗺️ CHOIX",
+      "description": "Que faites-vous?",
+      "choices": [
+        {
+          "text": "Explorer Gisombre",
+          "next_scene": "location_1",
+          "effects": {}
+        },
+        {
+          "text": "Explorer The",
+          "next_scene": "location_2",
+          "effects": {}
+        },
+        {
+          "text": "Explorer Manuel des \nJoueurs",
+          "next_scene": "location_3",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "location_1",
+      "type": "narrative",
+      "title": "🏛️ GISOMBRE",
+      "text": "Vous arrivez à Gisombre.\n\nVous explorez les lieux...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "location_2",
+      "type": "narrative",
+      "title": "🏛️ THE",
+      "text": "Vous arrivez à The.\n\nVous explorez les lieux...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "location_3",
+      "type": "narrative",
+      "title": "🏛️ MANUEL DES \nJOUEURS",
+      "text": "Vous arrivez à Manuel des \nJoueurs.\n\nVous explorez les lieux...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "adventure_start",
+      "type": "narrative",
+      "title": "⚔️ L'AVENTURE COMMENCE",
+      "text": "Votre aventure commence...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "encounter_1",
+      "type": "combat",
+      "title": "⚔️ COMBAT",
+      "description": "Des ennemis vous attaquent!",
+      "monsters": [
+        "goblin",
+        "goblin"
+      ],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Vous avez accompli votre mission dans Quelque chose de perdu!\n\nVous êtes récompensés pour vos exploits.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 500,
+        "items": []
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus...",
+      "next_scene": null
+    }
+  ]
+}

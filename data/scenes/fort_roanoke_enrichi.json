@@ -1,0 +1,100 @@
+{
+  "scenario_id": "fort_roanoke",
+  "name": "Fort Roanoke",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "description": "Scénario enrichi automatiquement depuis le PDF. 8 sections, 7 lieux.",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "📖 FORT ROANOKE",
+      "text": "\n",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "main_choice",
+      "type": "choice",
+      "title": "🗺️ CHOIX",
+      "description": "Que faites-vous?",
+      "choices": [
+        {
+          "text": "Explorer Liberté",
+          "next_scene": "location_1",
+          "effects": {}
+        },
+        {
+          "text": "Explorer Pays des Géants",
+          "next_scene": "location_2",
+          "effects": {}
+        },
+        {
+          "text": "Explorer Châtiment",
+          "next_scene": "location_3",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "location_1",
+      "type": "narrative",
+      "title": "🏛️ LIBERTÉ",
+      "text": "Vous arrivez à Liberté.\n\nVous explorez les lieux...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "location_2",
+      "type": "narrative",
+      "title": "🏛️ PAYS DES GÉANTS",
+      "text": "Vous arrivez à Pays des Géants.\n\nVous explorez les lieux...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "location_3",
+      "type": "narrative",
+      "title": "🏛️ CHÂTIMENT",
+      "text": "Vous arrivez à Châtiment.\n\nVous explorez les lieux...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "adventure_start",
+      "type": "narrative",
+      "title": "⚔️ L'AVENTURE COMMENCE",
+      "text": "Votre aventure commence...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "encounter_1",
+      "type": "combat",
+      "title": "⚔️ COMBAT",
+      "description": "Des ennemis vous attaquent!",
+      "monsters": [
+        "goblin",
+        "goblin"
+      ],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Vous avez accompli votre mission dans Fort Roanoke!\n\nVous êtes récompensés pour vos exploits.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 500,
+        "items": []
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus...",
+      "next_scene": null
+    }
+  ]
+}

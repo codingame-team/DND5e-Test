@@ -1,0 +1,69 @@
+{
+  "scenario_id": "malediction_autretant",
+  "name": "Malediction Autretant",
+  "level": 2,
+  "difficulty": "medium",
+  "duration_hours": "2-3",
+  "recommended_party_size": 4,
+  "description": "Scénario enrichi automatiquement depuis le PDF. 3 sections, 0 lieux.",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "narrative",
+      "title": "📖 MALEDICTION AUTRETANT",
+      "text": "oilà près de trente ans, le sieur d'Autretant reçut  du duc d’Agramor un beau terrain forestier à  une journée de marche au nord de Goracht, en  remerciement de sa vaillance lors d’une  campagne contre des bandes organisées de  bandits venants du Bief de Vilhon. D'abord  installé dans un modeste fortin en bois et peu  exigeant en corvées et en impôts, le seigneur d'Autretant, élevé au  rang de bar...",
+      "next_scene": "main_choice"
+    },
+    {
+      "id": "main_choice",
+      "type": "choice",
+      "title": "🗺️ CHOIX",
+      "description": "Que faites-vous?",
+      "choices": [
+        {
+          "text": "Commencer l'aventure",
+          "next_scene": "adventure_start",
+          "effects": {}
+        }
+      ]
+    },
+    {
+      "id": "adventure_start",
+      "type": "narrative",
+      "title": "⚔️ L'AVENTURE COMMENCE",
+      "text": "Votre aventure commence...",
+      "next_scene": "encounter_1"
+    },
+    {
+      "id": "encounter_1",
+      "type": "combat",
+      "title": "⚔️ COMBAT",
+      "description": "Des ennemis vous attaquent!",
+      "monsters": [
+        "goblin",
+        "goblin"
+      ],
+      "on_victory": "victory",
+      "on_defeat": "game_over"
+    },
+    {
+      "id": "victory",
+      "type": "narrative",
+      "title": "🎉 VICTOIRE!",
+      "text": "Vous avez accompli votre mission dans Malediction Autretant!\n\nVous êtes récompensés pour vos exploits.",
+      "next_scene": null,
+      "rewards": {
+        "gold": 200,
+        "xp": 500,
+        "items": []
+      }
+    },
+    {
+      "id": "game_over",
+      "type": "narrative",
+      "title": "💀 DÉFAITE",
+      "text": "Vous avez été vaincus...",
+      "next_scene": null
+    }
+  ]
+}
